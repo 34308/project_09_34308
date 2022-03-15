@@ -7,5 +7,7 @@ public class Main {
         board.showPlayerBoard();
         board.placeShips();
         board.showPlayerBoard();
+        AiBoard aiBoard=new AiBoard();
+        aiBoard.showPlayerBoard();
     }
 }
