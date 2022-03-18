@@ -43,11 +43,14 @@ public class AiBoard extends Board{
         }
     }
     //ODCZYTYWANIE POZYCJI Z PLIKU I PRZENOSZENIE ICH NA TABLICE
-    public void addAiShips() throws FileNotFoundException{
+    public void addAiShips() throws FileNotFoundException, IncorrectFileException {
         Random rand = new Random();
         int fileNumber = rand.nextInt(1,2);
         File file = new File("scheme"+fileNumber+".txt");
-
+        FileValidator fileValidator=new FileValidator();
+        if(!fileValidator.isValid(file)){
+            throw new IncorrectFileException("File"+"scheme"+fileNumber+".txt"+" is incorrect");
+        }
         Scanner sc=new Scanner(file);
         String line;
         ArrayList<Ship> localShips = new ArrayList<Ship>();
