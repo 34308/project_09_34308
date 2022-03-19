@@ -4,6 +4,7 @@ import java.util.InputMismatchException;
 import java.util.Scanner;
 
 public class Board {
+    AiMemory aiMemory =new AiMemory();
     //wielkosc planszy
     int boardSize = 10;
     static int numberOfShips = 10;
@@ -82,9 +83,75 @@ public class Board {
         }
         return false;
     }
-    //randomowy strzał wykonywany przez komputer w tablice gracza
-   public void shotAt() {
-   }
+    public boolean hitShip(int x,int y){
+        int[][] position ;
+        int size;
+        //przeszukiwanie wszystkich statków statku o tej samej pozycji co x i y
+        for(int i = 0; i< 10; i++){
+            position= ships[i].getPosition();
+            size=ships[i].getSize();
+            for(int l = 0; l< size; l++){
+                if(position[l][0]==x && position[l][1]==y &&ships[i].isAlive()){
+                    ships[i].hitted();
+                    return true;
+                }
+            }
+        }
+        return false;
+    }
+    public void shotAt(){
+        aiMemory.copyBoard(board.clone());
+        int[] xy=new int[2];
+        int miss=0;
+        if(aiMemory.getState()==0){
+            xy[0]=aiMemory.getX();
+            xy[1]=aiMemory.getY();
+            if(board[xy[0]][xy[1]]==1){
+                hitShip(xy[0],xy[1]);
+                board[xy[0]][xy[1]]=9;
+                aiMemory.setState(1);
+                aiMemory.setCxCy(xy);
+            }
+            else if(board[xy[0]][xy[1]]==0){
+                aiMemory.setFindNewShip();
+                board[xy[0]][xy[1]]=8;
+            }else if(board[xy[0]][xy[1]]==9||board[xy[0]][xy[1]]==8){
+                aiMemory.setFindNewShip();
+                shotAt();
+            }
+        }
+        else if(aiMemory.getState()==1){
+            xy=aiMemory.nextShotCord();
+            if(board[xy[0]][xy[1]]==1){
+                miss=0;
+                hitShip(xy[0],xy[1]);
+                board[xy[0]][xy[1]]=9;
+                if(isDown(xy[0],xy[1])){
+                    aiMemory.setFindNewShip();
+                    aiMemory.setState(0);
+                }
+                else {
+                    aiMemory.setX(xy[0]);
+                    aiMemory.setY(xy[1]);
+                }
+            }
+            else if(board[xy[0]][xy[1]]==0){
+                board[xy[0]][xy[1]]=8;
+                miss++;
+                aiMemory.getBackToCenter();
+                aiMemory.nextCurrent();
+                if(miss>=4){
+                    aiMemory.setFindNewShip();
+                    aiMemory.setState(0);
+                }
+            }
+            else if(board[xy[0]][xy[1]]==9||board[xy[0]][xy[1]]==8){
+                aiMemory.setFindNewShip();
+                shotAt();
+            }
+        }
+        aiMemory.copyBoard(board.clone());
+    }
 
     //umieszczenie statków graczy na planszy
     public void placeShips(){
