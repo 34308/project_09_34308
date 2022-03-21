@@ -16,8 +16,7 @@ public class Board {
     //litery uzywane do drukowania tablicy i odczytywania wejścia gracza
     static char[] letters = {'A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J'};
 
-    private void constructShips()
-    {
+    private void constructShips(){
         for(int i=0;i<10;i++){
             ships[i]= new Ship();
         }
@@ -67,22 +66,6 @@ public class Board {
         }
     }
     //znajduje statek na wkazanej pozycji i odejmuje od niego hp
-
-    public boolean isDown(int x,int y){
-        int[][] position ;
-        int size;
-        //przeszukiwanie wszystkich statków statku o tej samej pozycji co x i y
-        for(int i = 0; i< 10; i++){
-            position= ships[i].getPosition();
-            size=ships[i].getSize();
-            for(int l = 0; l< size; l++){
-                if(position[l][0]==x && position[l][1]==y){
-                    return !ships[i].isAlive();
-                }
-            }
-        }
-        return false;
-    }
     public boolean hitShip(int x,int y){
         int[][] position ;
         int size;
@@ -99,6 +82,22 @@ public class Board {
         }
         return false;
     }
+    public boolean isDown(int x,int y){
+        int[][] position ;
+        int size;
+        //przeszukiwanie wszystkich statków statku o tej samej pozycji co x i y
+        for(int i = 0; i< 10; i++){
+            position= ships[i].getPosition();
+            size=ships[i].getSize();
+            for(int l = 0; l< size; l++){
+                if(position[l][0]==x && position[l][1]==y){
+                    return !ships[i].isAlive();
+                }
+            }
+        }
+        return false;
+    }
+    //randomowy strzał wykonywany przez komputer w tablice gracza
     public void shotAt(){
         aiMemory.copyBoard(board.clone());
         int[] xy=new int[2];
@@ -106,13 +105,16 @@ public class Board {
         if(aiMemory.getState()==0){
             xy[0]=aiMemory.getX();
             xy[1]=aiMemory.getY();
+            System.out.println("1-stacja "+board[xy[0]][xy[1]]);
             if(board[xy[0]][xy[1]]==1){
+                System.out.println("trafiony 1-stacja");
                 hitShip(xy[0],xy[1]);
                 board[xy[0]][xy[1]]=9;
                 aiMemory.setState(1);
                 aiMemory.setCxCy(xy);
             }
             else if(board[xy[0]][xy[1]]==0){
+                System.out.println("Pudlo 1-stacja");
                 aiMemory.setFindNewShip();
                 board[xy[0]][xy[1]]=8;
             }else if(board[xy[0]][xy[1]]==9||board[xy[0]][xy[1]]==8){
@@ -121,8 +123,11 @@ public class Board {
             }
         }
         else if(aiMemory.getState()==1){
+            System.out.println("2-stacja");
             xy=aiMemory.nextShotCord();
+            System.out.println("2-stacja "+board[xy[0]][xy[1]]);
             if(board[xy[0]][xy[1]]==1){
+                System.out.println("trafiony 2-stacja");
                 miss=0;
                 hitShip(xy[0],xy[1]);
                 board[xy[0]][xy[1]]=9;
@@ -136,6 +141,7 @@ public class Board {
                 }
             }
             else if(board[xy[0]][xy[1]]==0){
+                System.out.println("pudlo 2-stacja"+board[xy[0]][xy[1]]);
                 board[xy[0]][xy[1]]=8;
                 miss++;
                 aiMemory.getBackToCenter();
@@ -149,6 +155,8 @@ public class Board {
                 aiMemory.setFindNewShip();
                 shotAt();
             }
+
+
         }
         aiMemory.copyBoard(board.clone());
     }
@@ -319,9 +327,9 @@ public class Board {
         int[][] position=new int[size][2];
         if (dir == 1) {
             for (int i = x; i >x - size; i--) {
-                    position[it][0]=i;
-                    position[it][1]=y;
-                    it++;
+                position[it][0]=i;
+                position[it][1]=y;
+                it++;
             }
         }
         if (dir == 2) {
@@ -360,6 +368,7 @@ public class Board {
             }
         }
         if(it==10){
+            System.out.println("AI wygrało!!");
             return true;
 
         }else{

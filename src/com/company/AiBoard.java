@@ -1,5 +1,7 @@
 package com.company;
 
+import com.company.exeptions.IncorrectFileException;
+
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.util.ArrayList;
@@ -8,7 +10,7 @@ import java.util.Scanner;
 
 public class AiBoard extends Board{
     //TAKI SAM JAK SHOW PLAYER BOARD W BOARD ALE NIE WYSWIETLA POZYCJI STATKOW
-    public void showPlayerBoard(){
+    public void showPlayerBoard() {
         for (int i = 0; i < boardSize + 1; i++) {
             for (int j = 0; j < boardSize + 1; j++) {
                 if (i == 0) {
@@ -85,7 +87,7 @@ public class AiBoard extends Board{
         }while(board[x][y]==8||board[x][y]==9);
 
         if(board[x][y]==1){
-
+            hitShip(x,y);
             board[x][y]=9;
         }
         else if(board[x][y]==0){

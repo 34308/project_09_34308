@@ -2,7 +2,7 @@ package com.company;
 
 import java.util.Random;
 
-public class AiMemory{
+public class AiMemory {
     Random generator = new Random();
     int[][] board=new int[10][10];
     int x;
