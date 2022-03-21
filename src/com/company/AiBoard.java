@@ -48,7 +48,8 @@ public class AiBoard extends Board{
     public void addAiShips() throws FileNotFoundException, IncorrectFileException {
         Random rand = new Random();
         int fileNumber = rand.nextInt(1,2);
-        File file = new File("scheme"+fileNumber+".txt");
+        String currentPath = System.getProperty("user.dir");
+        File file = new File(currentPath+"/src/scheme"+fileNumber+".txt");
         FileValidator fileValidator=new FileValidator();
         if(!fileValidator.isValid(file)){
             throw new IncorrectFileException("File"+"scheme"+fileNumber+".txt"+" is incorrect");
