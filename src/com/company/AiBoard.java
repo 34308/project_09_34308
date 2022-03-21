@@ -4,7 +4,6 @@ import com.company.exeptions.IncorrectFileException;
 
 import java.io.File;
 import java.io.FileNotFoundException;
-import java.nio.file.Paths;
 import java.util.ArrayList;
 import java.util.Random;
 import java.util.Scanner;
@@ -48,9 +47,8 @@ public class AiBoard extends Board{
     //ODCZYTYWANIE POZYCJI Z PLIKU I PRZENOSZENIE ICH NA TABLICE
     public void addAiShips() throws FileNotFoundException, IncorrectFileException {
         Random rand = new Random();
-        String currentPath = System.getProperty("user.dir");
         int fileNumber = rand.nextInt(1,2);
-        File file = new File(currentPath+"/src/scheme"+fileNumber+".txt");
+        File file = new File("scheme"+fileNumber+".txt");
         FileValidator fileValidator=new FileValidator();
         if(!fileValidator.isValid(file)){
             throw new IncorrectFileException("File"+"scheme"+fileNumber+".txt"+" is incorrect");
