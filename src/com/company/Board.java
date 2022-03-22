@@ -74,10 +74,10 @@ public class Board {
             position= ships[i].getPosition();
             size=ships[i].getSize();
             for(int l = 0; l< size; l++){
-                if(position[l][0]==x && position[l][1]==y &&ships[i].isAlive()){
-                    ships[i].hitted();
-                    return true;
-                }
+                    if(position[l][0]==x && position[l][1]==y &&ships[i].isAlive()){
+                        ships[i].hitted();
+                        return true;
+                    }
             }
         }
         return false;
@@ -98,8 +98,8 @@ public class Board {
         return false;
     }
     //randomowy strzał wykonywany przez komputer w tablice gracza
-    public void shotAt(){
-        aiMemory.copyBoard(board.clone());
+   public void shotAt(){
+       aiMemory.copyBoard(board.clone());
         int[] xy=new int[2];
         int miss=0;
         if(aiMemory.getState()==0){
@@ -154,11 +154,11 @@ public class Board {
             else if(board[xy[0]][xy[1]]==9||board[xy[0]][xy[1]]==8){
                 aiMemory.setFindNewShip();
                 shotAt();
-            }
+        }
 
 
         }
-        aiMemory.copyBoard(board.clone());
+       aiMemory.copyBoard(board.clone());
     }
 
     //umieszczenie statków graczy na planszy
@@ -327,9 +327,9 @@ public class Board {
         int[][] position=new int[size][2];
         if (dir == 1) {
             for (int i = x; i >x - size; i--) {
-                position[it][0]=i;
-                position[it][1]=y;
-                it++;
+                    position[it][0]=i;
+                    position[it][1]=y;
+                    it++;
             }
         }
         if (dir == 2) {
