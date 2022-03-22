@@ -38,10 +38,10 @@ public class Ship {
     //zmienjsza punkty zycia statku o jeden za kazde wywolanie
 
     public void hitted(){
-
+        System.out.println("Trafiony");
         this.hitPoints--;
         if(hitPoints<=0){
-
+            System.out.println("Zatopiony");
         }
     }
     //zwraca alive uzywany do sprawdzenia czy statek nadal funkcjonujes

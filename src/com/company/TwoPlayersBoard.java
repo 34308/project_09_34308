@@ -1,10 +1,8 @@
 package com.company;
 
-import com.company.Board;
-
 import java.util.Scanner;
 
-public class TwoPlayersBoard extends Board {
+public class TwoPlayersBoard extends Board{
     @Override
     public void shotAt(){
         Scanner scanner=new Scanner(System.in);
