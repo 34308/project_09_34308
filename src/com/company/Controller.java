@@ -15,16 +15,13 @@ public class Controller {
     Timer timer=new Timer();
 
     public int getGameMode() {
-        int gameMode=0;
+        int gameMode=3;
         Scanner scanner=new Scanner(System.in);
         System.out.println("wybierz tryb rozgrywki:\n[1]-Gracz vs AI\n[2]-Gracz vs Gracz\n[0]-aby wyjsc");
-        do{
-            gameMode=scanner.nextInt();
-            if(gameMode==1||gameMode==2){
-                return gameMode;
-            }
-        }while (gameMode!=0);
-        return 0;
+        while(!(gameMode==0||gameMode==1||gameMode==2)) {
+            gameMode = scanner.nextInt();
+        }
+        return gameMode;
     }
     public void PlayerVsPlayer() throws InterruptedException {
         boolean end=false;
