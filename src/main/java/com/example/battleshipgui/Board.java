@@ -1,4 +1,6 @@
-package com.company;
+package com.example.battleshipgui;
+
+import javafx.event.ActionEvent;
 
 import java.util.InputMismatchException;
 import java.util.Scanner;
@@ -16,8 +18,7 @@ public class Board {
     //litery uzywane do drukowania tablicy i odczytywania wejścia gracza
     static char[] letters = {'A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J'};
 
-    private void constructShips()
-    {
+    private void constructShips(){
         for(int i=0;i<10;i++){
             ships[i]= new Ship();
         }
@@ -67,7 +68,22 @@ public class Board {
         }
     }
     //znajduje statek na wkazanej pozycji i odejmuje od niego hp
-
+    public boolean hitShip(int x,int y){
+        int[][] position ;
+        int size;
+        //przeszukiwanie wszystkich statków statku o tej samej pozycji co x i y
+        for(int i = 0; i< 10; i++){
+            position= ships[i].getPosition();
+            size=ships[i].getSize();
+            for(int l = 0; l< size; l++){
+                    if(position[l][0]==x && position[l][1]==y &&ships[i].isAlive()){
+                        ships[i].hitted();
+                        return true;
+                    }
+            }
+        }
+        return false;
+    }
     public boolean isDown(int x,int y){
         int[][] position ;
         int size;
@@ -83,24 +99,9 @@ public class Board {
         }
         return false;
     }
-    public boolean hitShip(int x,int y){
-        int[][] position ;
-        int size;
-        //przeszukiwanie wszystkich statków statku o tej samej pozycji co x i y
-        for(int i = 0; i< 10; i++){
-            position= ships[i].getPosition();
-            size=ships[i].getSize();
-            for(int l = 0; l< size; l++){
-                if(position[l][0]==x && position[l][1]==y &&ships[i].isAlive()){
-                    ships[i].hitted();
-                    return true;
-                }
-            }
-        }
-        return false;
-    }
-    public void shotAt(){
-        aiMemory.copyBoard(board.clone());
+    //randomowy strzał wykonywany przez komputer w tablice gracza
+   public void shotAt(){
+       aiMemory.copyBoard(board.clone());
         int[] xy=new int[2];
         int miss=0;
         if(aiMemory.getState()==0){
@@ -113,6 +114,7 @@ public class Board {
                 aiMemory.setCxCy(xy);
             }
             else if(board[xy[0]][xy[1]]==0){
+
                 aiMemory.setFindNewShip();
                 board[xy[0]][xy[1]]=8;
             }else if(board[xy[0]][xy[1]]==9||board[xy[0]][xy[1]]==8){
@@ -136,6 +138,7 @@ public class Board {
                 }
             }
             else if(board[xy[0]][xy[1]]==0){
+
                 board[xy[0]][xy[1]]=8;
                 miss++;
                 aiMemory.getBackToCenter();
@@ -148,13 +151,15 @@ public class Board {
             else if(board[xy[0]][xy[1]]==9||board[xy[0]][xy[1]]==8){
                 aiMemory.setFindNewShip();
                 shotAt();
-            }
         }
-        aiMemory.copyBoard(board.clone());
+
+
+        }
+       aiMemory.copyBoard(board.clone());
     }
 
     //umieszczenie statków graczy na planszy
-    public void placeShips(){
+   /** public void placeShips(){
         int i=0;
         //wybieranie poszczególnych statków zaczynając od 2-poziomowych po ich ilości 2-4, 3-3 4-2 6-1
         while (i < 4) {
@@ -173,11 +178,18 @@ public class Board {
             placeTheShip(i, 6);
             i++;
         }
-    }
-    private void placeTheShip(int currentShipNumber, int currentShipSize){
-        int x = getXCoordinate(currentShipSize);
-        int y = getYCoordinate(currentShipSize);
-        int dir = getDirection();
+    }*/
+   public void resetShips() {
+       for(int i=0;i<10;i++){
+           for(int j=0;j<10;j++){
+               if(board[i][j]==1){
+                   board[i][j]=0;
+               }
+           }
+       }
+   }
+    public boolean placeTheShip(int currentShipNumber, int currentShipSize,int x,int y,int dir){
+
         //przekształcenie litery na liczbe1
         //sprawdzanie czy miejsce do ktorego chcemy wpisac statek jest wolne
         if (checkPlace(x, y, dir, currentShipSize)) {
@@ -188,8 +200,10 @@ public class Board {
         } else//JEZELI NIE WYSWIETL KOMUNIKAT O BLEDZIE
         {
             System.out.println("Błedne koordynaty");
-            placeTheShip(currentShipNumber, currentShipSize);
+            return false;
+
         }
+        return true;
     }
 
     private int getDirection() {
@@ -346,6 +360,7 @@ public class Board {
             }
         }
         for (int i = 0; i < size; i++) {
+            System.out.println("11111111111111");
             //PRZEPISUJE POZYCJE STATKU NA TABLICE
             board[position[i][0]][position[i][1]]=1;
         }
@@ -360,6 +375,7 @@ public class Board {
             }
         }
         if(it==10){
+            System.out.println("AI wygrało!!");
             return true;
 
         }else{

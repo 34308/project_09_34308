@@ -1,4 +1,8 @@
-package com.company;
+package com.example.battleshipgui;
+
+
+
+import com.example.battleshipgui.exeptions.IncorrectFileException;
 
 import java.io.File;
 import java.io.FileNotFoundException;
@@ -8,7 +12,7 @@ import java.util.Scanner;
 
 public class AiBoard extends Board{
     //TAKI SAM JAK SHOW PLAYER BOARD W BOARD ALE NIE WYSWIETLA POZYCJI STATKOW
-    public void showPlayerBoard(){
+    public void showPlayerBoard() {
         for (int i = 0; i < boardSize + 1; i++) {
             for (int j = 0; j < boardSize + 1; j++) {
                 if (i == 0) {
@@ -74,18 +78,9 @@ public class AiBoard extends Board{
 
     }
 
-    public void shotAt(){
-        int y=0,x=0;
-        do{
-            x=getXCoordinate();
-            y=getYCoordinate();
-            if(board[x][y]==8||board[x][y]==9){
-                System.out.println("Juz Strzelałeś w to miejsce!!");
-            }
-        }while(board[x][y]==8||board[x][y]==9);
-
+    public void shotAt(int x,int y){
         if(board[x][y]==1){
-
+            hitShip(x,y);
             board[x][y]=9;
         }
         else if(board[x][y]==0){
@@ -109,7 +104,7 @@ public class AiBoard extends Board{
         }
 
     }
-    private int getYCoordinate() {
+  /**  private int getYCoordinate() {
         char y = 'a';
         int n=0;
         while (true) {
@@ -122,9 +117,9 @@ public class AiBoard extends Board{
             }
             System.out.println("podaj wielką literę od A do J!\n");
         }
-    }
+    }*/
 
-    private int getXCoordinate() {
+    /**private int getXCoordinate() {
         int x = 0;
         while (true) {
             System.out.println("podaj pozycje strzału na osi liczbowej");
@@ -140,5 +135,5 @@ public class AiBoard extends Board{
                 scanner.nextLine();
             }
         }
-    }
+    }*/
 }

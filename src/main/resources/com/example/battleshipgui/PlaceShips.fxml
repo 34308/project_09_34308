@@ -1,0 +1,141 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
+
+<Pane nodeOrientation="LEFT_TO_RIGHT" prefHeight="610.0" prefWidth="769.0" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.battleshipgui.HelloController">
+    <GridPane fx:id="GuiBoard" alignment="CENTER" gridLinesVisible="true" layoutX="74.0" layoutY="89.0" onMouseClicked="#placeShip" prefHeight="500.0" prefWidth="500.0">
+        <columnConstraints>
+            <ColumnConstraints fillWidth="true" hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+            <ColumnConstraints fillWidth="true" hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+            <ColumnConstraints fillWidth="true" hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+            <ColumnConstraints fillWidth="true" hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+            <ColumnConstraints fillWidth="true" hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+            <ColumnConstraints fillWidth="true" hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+            <ColumnConstraints fillWidth="true" hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+            <ColumnConstraints fillWidth="true" hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+            <ColumnConstraints fillWidth="true" hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+            <ColumnConstraints fillWidth="true" hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+        </columnConstraints>
+        <rowConstraints>
+            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+        </rowConstraints>
+        <Region GridPane.columnIndex="0" GridPane.rowIndex="0" />
+        <Region GridPane.columnIndex="0" GridPane.rowIndex="1" />
+        <Region GridPane.columnIndex="0" GridPane.rowIndex="2" />
+        <Region GridPane.columnIndex="0" GridPane.rowIndex="3" />
+        <Region GridPane.columnIndex="0" GridPane.rowIndex="4" />
+        <Region GridPane.columnIndex="0" GridPane.rowIndex="5" />
+        <Region GridPane.columnIndex="0" GridPane.rowIndex="6" />
+        <Region GridPane.columnIndex="0" GridPane.rowIndex="7" />
+        <Region GridPane.columnIndex="0" GridPane.rowIndex="8" />
+        <Region GridPane.columnIndex="0" GridPane.rowIndex="9" />
+        <Region GridPane.columnIndex="1" GridPane.rowIndex="0" />
+        <Region GridPane.columnIndex="1" GridPane.rowIndex="1" />
+        <Region GridPane.columnIndex="1" GridPane.rowIndex="2" />
+        <Region GridPane.columnIndex="1" GridPane.rowIndex="3" />
+        <Region GridPane.columnIndex="1" GridPane.rowIndex="4" />
+        <Region GridPane.columnIndex="1" GridPane.rowIndex="5" />
+        <Region GridPane.columnIndex="1" GridPane.rowIndex="6" />
+        <Region GridPane.columnIndex="1" GridPane.rowIndex="7" />
+        <Region GridPane.columnIndex="1" GridPane.rowIndex="8" />
+        <Region GridPane.columnIndex="1" GridPane.rowIndex="9" />
+        <Region GridPane.columnIndex="2" GridPane.rowIndex="0" />
+        <Region GridPane.columnIndex="2" GridPane.rowIndex="1" />
+        <Region GridPane.columnIndex="2" GridPane.rowIndex="2" />
+        <Region GridPane.columnIndex="2" GridPane.rowIndex="3" />
+        <Region GridPane.columnIndex="2" GridPane.rowIndex="4" />
+        <Region GridPane.columnIndex="2" GridPane.rowIndex="5" />
+        <Region GridPane.columnIndex="2" GridPane.rowIndex="6" />
+        <Region GridPane.columnIndex="2" GridPane.rowIndex="7" />
+        <Region GridPane.columnIndex="2" GridPane.rowIndex="8" />
+        <Region GridPane.columnIndex="2" GridPane.rowIndex="9" />
+        <Region GridPane.columnIndex="3" GridPane.rowIndex="0" />
+        <Region GridPane.columnIndex="3" GridPane.rowIndex="1" />
+        <Region GridPane.columnIndex="3" GridPane.rowIndex="2" />
+        <Region GridPane.columnIndex="3" GridPane.rowIndex="3" />
+        <Region GridPane.columnIndex="3" GridPane.rowIndex="4" />
+        <Region GridPane.columnIndex="3" GridPane.rowIndex="5" />
+        <Region GridPane.columnIndex="3" GridPane.rowIndex="6" />
+        <Region GridPane.columnIndex="3" GridPane.rowIndex="7" />
+        <Region GridPane.columnIndex="3" GridPane.rowIndex="8" />
+        <Region GridPane.columnIndex="3" GridPane.rowIndex="9" />
+        <Region GridPane.columnIndex="4" GridPane.rowIndex="0" />
+        <Region GridPane.columnIndex="4" GridPane.rowIndex="1" />
+        <Region GridPane.columnIndex="4" GridPane.rowIndex="2" />
+        <Region GridPane.columnIndex="4" GridPane.rowIndex="3" />
+        <Region GridPane.columnIndex="4" GridPane.rowIndex="4" />
+        <Region GridPane.columnIndex="4" GridPane.rowIndex="5" />
+        <Region GridPane.columnIndex="4" GridPane.rowIndex="6" />
+        <Region GridPane.columnIndex="4" GridPane.rowIndex="7" />
+        <Region GridPane.columnIndex="4" GridPane.rowIndex="8" />
+        <Region GridPane.columnIndex="4" GridPane.rowIndex="9" />
+        <Region GridPane.columnIndex="5" GridPane.rowIndex="0" />
+        <Region GridPane.columnIndex="5" GridPane.rowIndex="1" />
+        <Region GridPane.columnIndex="5" GridPane.rowIndex="2" />
+        <Region GridPane.columnIndex="5" GridPane.rowIndex="3" />
+        <Region GridPane.columnIndex="5" GridPane.rowIndex="4" />
+        <Region GridPane.columnIndex="5" GridPane.rowIndex="5" />
+        <Region GridPane.columnIndex="5" GridPane.rowIndex="6" />
+        <Region GridPane.columnIndex="5" GridPane.rowIndex="7" />
+        <Region GridPane.columnIndex="5" GridPane.rowIndex="8" />
+        <Region GridPane.columnIndex="5" GridPane.rowIndex="9" />
+        <Region GridPane.columnIndex="6" GridPane.rowIndex="0" />
+        <Region GridPane.columnIndex="6" GridPane.rowIndex="1" />
+        <Region GridPane.columnIndex="6" GridPane.rowIndex="2" />
+        <Region GridPane.columnIndex="6" GridPane.rowIndex="3" />
+        <Region GridPane.columnIndex="6" GridPane.rowIndex="4" />
+        <Region GridPane.columnIndex="6" GridPane.rowIndex="5" />
+        <Region GridPane.columnIndex="6" GridPane.rowIndex="6" />
+        <Region GridPane.columnIndex="6" GridPane.rowIndex="7" />
+        <Region GridPane.columnIndex="6" GridPane.rowIndex="8" />
+        <Region GridPane.columnIndex="6" GridPane.rowIndex="9" />
+        <Region GridPane.columnIndex="7" GridPane.rowIndex="0" />
+        <Region GridPane.columnIndex="7" GridPane.rowIndex="1" />
+        <Region GridPane.columnIndex="7" GridPane.rowIndex="2" />
+        <Region GridPane.columnIndex="7" GridPane.rowIndex="3" />
+        <Region GridPane.columnIndex="7" GridPane.rowIndex="4" />
+        <Region GridPane.columnIndex="7" GridPane.rowIndex="5" />
+        <Region GridPane.columnIndex="7" GridPane.rowIndex="6" />
+        <Region GridPane.columnIndex="7" GridPane.rowIndex="7" />
+        <Region GridPane.columnIndex="7" GridPane.rowIndex="8" />
+        <Region GridPane.columnIndex="7" GridPane.rowIndex="9" />
+        <Region GridPane.columnIndex="8" GridPane.rowIndex="0" />
+        <Region GridPane.columnIndex="8" GridPane.rowIndex="1" />
+        <Region GridPane.columnIndex="8" GridPane.rowIndex="2" />
+        <Region GridPane.columnIndex="8" GridPane.rowIndex="3" />
+        <Region GridPane.columnIndex="8" GridPane.rowIndex="4" />
+        <Region GridPane.columnIndex="8" GridPane.rowIndex="5" />
+        <Region GridPane.columnIndex="8" GridPane.rowIndex="6" />
+        <Region GridPane.columnIndex="8" GridPane.rowIndex="7" />
+        <Region GridPane.columnIndex="8" GridPane.rowIndex="8" />
+        <Region GridPane.columnIndex="8" GridPane.rowIndex="9" />
+        <Region GridPane.columnIndex="9" GridPane.rowIndex="0" />
+        <Region GridPane.columnIndex="9" GridPane.rowIndex="1" />
+        <Region GridPane.columnIndex="9" GridPane.rowIndex="2" />
+        <Region GridPane.columnIndex="9" GridPane.rowIndex="3" />
+        <Region GridPane.columnIndex="9" GridPane.rowIndex="4" />
+        <Region GridPane.columnIndex="9" GridPane.rowIndex="5" />
+        <Region GridPane.columnIndex="9" GridPane.rowIndex="6" />
+        <Region GridPane.columnIndex="9" GridPane.rowIndex="7" />
+        <Region GridPane.columnIndex="9" GridPane.rowIndex="8" />
+        <Region GridPane.columnIndex="9" GridPane.rowIndex="9" />
+    </GridPane>
+   <Label layoutX="211.0" layoutY="20.0" text="Place Sihps">
+      <font>
+         <Font size="33.0" />
+      </font>
+   </Label>
+   <Button layoutX="614.0" layoutY="89.0" mnemonicParsing="false" onAction="#resetShips" text="Reset ship Placement" />
+   <Button layoutX="658.0" layoutY="132.0" mnemonicParsing="false" onAction="#startGame" text="Start" />
+</Pane>

@@ -1,4 +1,4 @@
-package com.company;
+package com.example.battleshipgui;
 
 import java.io.File;
 import java.io.FileNotFoundException;
