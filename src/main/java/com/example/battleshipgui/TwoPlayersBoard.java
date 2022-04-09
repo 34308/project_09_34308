@@ -7,8 +7,8 @@ public class TwoPlayersBoard extends Board{
     public void shotAt(){
         Scanner scanner=new Scanner(System.in);
         int y=0,x=0;
-        x=getXCoordinate();
-        y=getYCoordinate();
+       // x=getXCoordinate();
+       // y=getYCoordinate();
         if(board[x][y]==1){
             hitShip(x,y);
             board[x][y]=9;
@@ -17,7 +17,7 @@ public class TwoPlayersBoard extends Board{
             board[x][y]=8;
         }
     }
-    private int getYCoordinate() {
+   /** private int getYCoordinate() {
         char y = 'a';
         int n=0;
         while (true) {
@@ -48,7 +48,7 @@ public class TwoPlayersBoard extends Board{
                 scanner.nextLine();
             }
         }
-    }
+    }*/
     public void showObstructedPlayerBoard() {
         for (int i = 0; i < boardSize + 1; i++) {
             for (int j = 0; j < boardSize + 1; j++) {

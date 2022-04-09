@@ -15,7 +15,6 @@ import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.GridPane;
 import javafx.scene.shape.Rectangle;
 import javafx.stage.Stage;
-import net.synedra.validatorfx.Check;
 
 import java.io.FileNotFoundException;
 import java.io.IOException;
@@ -30,9 +29,13 @@ import static javafx.scene.paint.Color.*;
 public class ShipBattleController implements Initializable {
     @FXML
     public DialogPane startGameWindow;
+    public Label endingMessage;
+    public DialogPane endingPane;
     List<Rectangle> rectangles=new ArrayList<>();
     List<Rectangle> eRectangles=new ArrayList<>();
     int it=0;
+
+
     int eit=0;
     int sqSize=50;
     Board board=new Board();
@@ -47,7 +50,7 @@ public class ShipBattleController implements Initializable {
     GridPane PlayerBoard;
     @FXML
     GridPane AIBoard;
-
+    ArrayList<int[]> clicked=new ArrayList<int[]>();
 
     @FXML
     private void receiveData(Event event) {
@@ -97,6 +100,7 @@ public class ShipBattleController implements Initializable {
         }
 
     }
+
     public void colourEnemyTable(){
         for(int i=0;i<10;i++){
             for(int j=0;j<10;j++){
@@ -128,18 +132,41 @@ public class ShipBattleController implements Initializable {
             Integer rowIndex = AIBoard.getRowIndex(target);
             if (colIndex == null || rowIndex == null) {
                 System.out.println("BOO");
-            } else
-            {
-                aiBoard.shotAt(rowIndex,colIndex);
-                board.shotAt();
+            } else {
+                if (checkClicked(rowIndex, colIndex)) {
+                    aiBoard.shotAt(rowIndex, colIndex);
+                    if(aiBoard.isEnded()) win();
+                    board.shotAt();
+                    if(board.isEnded()) lost();
+                    clicked.add(new int[]{rowIndex.intValue(), colIndex.intValue()});
+                }
             }
-        }
-
+            }
         clearTable();
         colourTable();
         colourEnemyTable();
     }
+    public boolean checkClicked(Integer r,Integer c){
+        for (int[] i:clicked) {
+            if(i[0]==r.intValue() && i[1]==c.intValue()){
+                return false;
+            }
+        }
+        return true;
+    }
+    public void win(){
+        AIBoard.setDisable(true);
+        PlayerBoard.setDisable(true);
+        endingPane.setVisible(true);
+        endingMessage.setText("YOU HAVE WON!");
 
+    }
+    public void lost(){
+        AIBoard.setDisable(true);
+        PlayerBoard.setDisable(true);
+        endingPane.setVisible(true);
+        endingMessage.setText("YOU HAVE LOST!!");
+    }
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         aiBoard=new AiBoard();
@@ -153,5 +180,13 @@ public class ShipBattleController implements Initializable {
         crateRectangles();
         PlayerBoard.setDisable(true);
         AIBoard.setDisable(true);
+    }
+
+    public void goToMenu(ActionEvent e) throws IOException {
+        FXMLLoader fxmlLoader = new FXMLLoader(HelloApplication.class.getResource("Menu.fxml"));
+        Scene scene = new Scene(fxmlLoader.load() ,300, 300);
+        Stage stage=(Stage) ((Node) e.getSource()).getScene().getWindow();
+        stage.setScene(scene);
+        stage.show();
     }
 }

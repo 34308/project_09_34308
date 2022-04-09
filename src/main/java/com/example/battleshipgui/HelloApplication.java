@@ -62,7 +62,7 @@ public class HelloApplication extends Application {
 
         */
 
-        Scene scene = new Scene(fxmlLoader.load() ,520, 440);
+        Scene scene = new Scene(fxmlLoader.load() ,340, 380);
         stage.setScene(scene);
         stage.show();
     }

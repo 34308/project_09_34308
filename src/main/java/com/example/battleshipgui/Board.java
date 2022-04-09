@@ -103,61 +103,73 @@ public class Board {
    public void shotAt(){
        aiMemory.copyBoard(board.clone());
         int[] xy=new int[2];
-        int miss=0;
+
         if(aiMemory.getState()==0){
+            System.out.println("0");
+            aiMemory.miss=0;
             xy[0]=aiMemory.getX();
             xy[1]=aiMemory.getY();
             if(board[xy[0]][xy[1]]==1){
+                System.out.println("0-1");
                 hitShip(xy[0],xy[1]);
                 board[xy[0]][xy[1]]=9;
                 aiMemory.setState(1);
                 aiMemory.setCxCy(xy);
+                aiMemory.setX(xy[0]);
+                aiMemory.setY(xy[1]);
             }
             else if(board[xy[0]][xy[1]]==0){
-
+                System.out.println("0-0");
                 aiMemory.setFindNewShip();
                 board[xy[0]][xy[1]]=8;
             }else if(board[xy[0]][xy[1]]==9||board[xy[0]][xy[1]]==8){
+                System.out.println("0-R");
                 aiMemory.setFindNewShip();
                 shotAt();
             }
         }
-        else if(aiMemory.getState()==1){
-            xy=aiMemory.nextShotCord();
-            if(board[xy[0]][xy[1]]==1){
-                miss=0;
-                hitShip(xy[0],xy[1]);
-                board[xy[0]][xy[1]]=9;
-                if(isDown(xy[0],xy[1])){
+        else if(aiMemory.getState()==1) {
+            System.out.println("1");
+            xy = aiMemory.nextShotCord();
+            if (board[xy[0]][xy[1]] == 1) {
+                System.out.println("1-1");
+                hitShip(xy[0], xy[1]);
+                board[xy[0]][xy[1]] = 9;
+                if (isDown(xy[0], xy[1])) {
+                    System.out.println("1-1-1");
                     aiMemory.setFindNewShip();
                     aiMemory.setState(0);
-                }
-                else {
+                } else {
+                    System.out.println("1-1-2");
                     aiMemory.setX(xy[0]);
                     aiMemory.setY(xy[1]);
                 }
-            }
-            else if(board[xy[0]][xy[1]]==0){
-
-                board[xy[0]][xy[1]]=8;
-                miss++;
+            } else if (board[xy[0]][xy[1]] == 0) {
+                System.out.println("1-0");
+                board[xy[0]][xy[1]] = 8;
                 aiMemory.getBackToCenter();
                 aiMemory.nextCurrent();
-                if(miss>=4){
-                    aiMemory.setFindNewShip();
-                    aiMemory.setState(0);
-                }
-            }
-            else if(board[xy[0]][xy[1]]==9||board[xy[0]][xy[1]]==8){
+
+            } else if (board[xy[0]][xy[1]] == 9 || board[xy[0]][xy[1]] == 8) {
+                System.out.println("1-R");
                 aiMemory.setFindNewShip();
                 shotAt();
+            }
         }
-
-
-        }
+        System.out.println("------------------------------");
        aiMemory.copyBoard(board.clone());
     }
-
+    public boolean arePlaced(){
+        int it=0;
+        for(int i = 0; i< 10; i++){
+            for(int j = 0; j< 10; j++){
+               if( board[i][j]==1){
+                   it++;
+               }
+            }
+        }
+        return it == 31;
+    }
     //umieszczenie statków graczy na planszy
    /** public void placeShips(){
         int i=0;
@@ -201,12 +213,11 @@ public class Board {
         {
             System.out.println("Błedne koordynaty");
             return false;
-
         }
         return true;
     }
 
-    private int getDirection() {
+    /**private int getDirection() {
         int direction;
         while (true) {
             System.out.println("podaj pozycje orientacje statku [1]-DO GORY [2]-PRAWO [3]-DOL [4]-LEWO ");
@@ -222,18 +233,18 @@ public class Board {
                 scanner.nextLine();
             }
         }
-    }
+    }*/
 
-    protected int letterToNumber(char y) {
+   /** protected int letterToNumber(char y) {
         for(int l=0;l<10;l++){
             if(letters[l] == y){
                 return l+1;
             }
         }
         return 0;
-    }
+    }*/
 
-    private int getYCoordinate(int sizeOfShip) {
+    /**private int getYCoordinate(int sizeOfShip) {
         char y;
         while (true) {
             System.out.println("podaj pozycje statku o wielkości " + sizeOfShip + "\npodaj y: ");
@@ -245,9 +256,9 @@ public class Board {
             }
             System.out.println("podaj wielką literę od A do J!\n");
         }
-    }
+    }*/
 
-    private int getXCoordinate(int sizeOfShip) {
+    /**private int getXCoordinate(int sizeOfShip) {
         int x ;
         while (true) {
             System.out.println("podaj pozycje statku o wielkości "+sizeOfShip+"\npodaj x: ");
@@ -263,7 +274,7 @@ public class Board {
                 scanner.nextLine();
             }
         }
-    }
+    }**/
 
     //SPRAWDZA CZY STATEK O PODANYM ROZMIARZE, POZYCJI I KIERUNKU MOZE ZOSTAC WPISANY
     private boolean checkPlace(int x, int y,int dir,int size) {
@@ -306,23 +317,22 @@ public class Board {
                 //W PRZYPADKU ZNALEZIENIA STAKTU W OBRĘBIE ZWROCIC FALSE
                 if (board[checkers[i][0]][checkers[i][1]]==1){
                     return false;
-
                 }
             }
         }
-        //JEZELI NIE ZNALEZIONO ZADNYCH PROBLEMOW ZWROC TRUE
+        size=size-1;
         if(size>0){
             if(dir==1){
-                return checkPlace(x-1,y,dir,size-1);
+                return checkPlace(x-1,y,dir,size);
             }
             if(dir==2){
-                return checkPlace(x,y+1,dir,size-1);
+                return checkPlace(x,y+1,dir,size);
             }
             if(dir==3){
-                return checkPlace(x+1,y,dir,size-1);
+                return checkPlace(x+1,y,dir,size);
             }
             if(dir==4){
-                return checkPlace(x,y-1,dir,size-1);
+                return checkPlace(x,y-1,dir,size);
             }
         }
         return true;

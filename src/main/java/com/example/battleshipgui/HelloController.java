@@ -1,26 +1,32 @@
 package com.example.battleshipgui;
 
+import javafx.application.Application;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
-import javafx.scene.Node;
-import javafx.scene.Parent;
-import javafx.scene.Scene;
+import javafx.fxml.Initializable;
+import javafx.scene.*;
 import javafx.scene.control.Label;
+import javafx.scene.image.Image;
 import javafx.scene.input.MouseButton;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.GridPane;
 import javafx.scene.shape.Rectangle;
 import javafx.stage.Stage;
+import javafx.stage.Window;
 
 import java.io.IOException;
+import java.net.URL;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.ResourceBundle;
 import java.util.Timer;
 
 import static javafx.scene.paint.Color.*;
 
-public class HelloController {
+public class HelloController{
+    Image image = new Image("cursor1.png");
+
     List <Rectangle> rectangles=new ArrayList<>();
     int it=0;
     final Board board=new Board();
@@ -28,30 +34,18 @@ public class HelloController {
     int i=0;
     @FXML
     GridPane GuiBoard;
-    @FXML
-    private Label welcomeText;
-
-    @FXML
-    protected void onHelloButtonClick() {
-        welcomeText.setText("Welcome to JavaFX Application!");
-    }
-
-    public void changeStage(ActionEvent event ) throws IOException {
-        FXMLLoader fxmlLoader = new FXMLLoader(HelloApplication.class.getResource("PlaceShips.fxml"));
-        Scene scene = new Scene(fxmlLoader.load() ,520, 540);
-        Stage stage=(Stage) ((Node) event.getSource()).getScene().getWindow();;
-        stage.setScene(scene);
-        stage.show();
-    }
 
 
     public void placeShip(MouseEvent e) throws IOException {
+
         crateRectangles();
         if(e.getButton()== MouseButton.SECONDARY){
             dir++;
             if(dir>4){
                 dir=1;
             }
+            image = new Image("cursor"+dir+".png");
+            GuiBoard.getScene().getRoot().setCursor(new ImageCursor(image,image.getWidth()/2,image.getHeight()/2));
             System.out.println(dir);
         }
         if(e.getButton()==MouseButton.PRIMARY){
@@ -95,23 +89,25 @@ public class HelloController {
             }
             colourTable();
         }
-
     }
 
     public void crateRectangles(){
         for(int i=0;i<100;i++){
-            rectangles.add(new Rectangle(50,50,GRAY));
+            double h=(GuiBoard.getHeight()-(10*GuiBoard.getHgap()))/10;
+            double v=(GuiBoard.getWidth()-(10*GuiBoard.getVgap()))/10;
+            rectangles.add(new Rectangle(h,v,GRAY));
         }
-
     }
     public void startGame(ActionEvent e) throws IOException {
-        Board b1=board;
-        FXMLLoader fxmlLoader = new FXMLLoader(HelloApplication.class.getResource("hello-ships.fxml"));
-        Scene scene = new Scene(fxmlLoader.load() ,520, 540);
-        Stage stage=(Stage) ((Node) e.getSource()).getScene().getWindow();
-        stage.setUserData(b1);
-        stage.setScene(scene);
-        stage.show();
+        if(board.arePlaced()){
+            Board b1=board;
+            FXMLLoader fxmlLoader = new FXMLLoader(HelloApplication.class.getResource("AiVsPArena.fxml"));
+            Scene scene = new Scene(fxmlLoader.load() ,1240, 920);
+            Stage stage=(Stage) ((Node) e.getSource()).getScene().getWindow();
+            stage.setUserData(b1);
+            stage.setScene(scene);
+            stage.show();
+        }
     }
 
     public void clearTable(){
@@ -136,4 +132,8 @@ public class HelloController {
         i=0;
         colourTable();
     }
+
+
+
+
 }
