@@ -90,6 +90,7 @@ public class HelloController{
     }
 
     public void crateRectangles(){
+
         for(int i=0;i<100;i++){
             double h=(GuiBoard.getHeight()-(10*GuiBoard.getHgap()))/10;
             double v=(GuiBoard.getWidth()-(10*GuiBoard.getVgap()))/10;
@@ -97,6 +98,7 @@ public class HelloController{
         }
     }
     public void startGame(ActionEvent e) throws IOException {
+
         if(board.arePlaced()){
             Board b1=board;
             FXMLLoader fxmlLoader = new FXMLLoader(HelloApplication.class.getResource("aicp-arena.fxml"));
