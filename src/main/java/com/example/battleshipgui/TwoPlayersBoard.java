@@ -2,13 +2,8 @@ package com.example.battleshipgui;
 
 import java.util.Scanner;
 
-public class TwoPlayersBoard extends Board{
-    @Override
-    public void shotAt(){
-        Scanner scanner=new Scanner(System.in);
-        int y=0,x=0;
-       // x=getXCoordinate();
-       // y=getYCoordinate();
+public class TwoPlayersBoard extends Board {
+    public void shotAt(int x,int y){
         if(board[x][y]==1){
             hitShip(x,y);
             board[x][y]=9;
@@ -16,6 +11,14 @@ public class TwoPlayersBoard extends Board{
         else if(board[x][y]==0){
             board[x][y]=8;
         }
+    }
+    TwoPlayersBoard(TwoPlayersBoard T){
+        this.board=T.board;
+        this.ships=T.ships;
+
+    }
+    public TwoPlayersBoard(){
+        constructShips();
     }
    /** private int getYCoordinate() {
         char y = 'a';

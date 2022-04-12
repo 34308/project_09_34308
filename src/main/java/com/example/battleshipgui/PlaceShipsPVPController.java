@@ -1,35 +1,34 @@
 package com.example.battleshipgui;
 
-import javafx.application.Application;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
-import javafx.fxml.Initializable;
-import javafx.scene.*;
-import javafx.scene.control.Label;
+import javafx.scene.ImageCursor;
+import javafx.scene.Node;
+import javafx.scene.Scene;
+import javafx.scene.control.Button;
 import javafx.scene.image.Image;
 import javafx.scene.input.MouseButton;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.GridPane;
 import javafx.scene.shape.Rectangle;
 import javafx.stage.Stage;
-import javafx.stage.Window;
 
 import java.io.IOException;
-import java.net.URL;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.ResourceBundle;
-import java.util.Timer;
 
-import static javafx.scene.paint.Color.*;
+import static javafx.scene.paint.Color.GRAY;
 
-public class HelloController{
+public class PlaceShipsPVPController {
+    public Button nextPlayerButton;
+    public Button startGameButton;
     Image image = new Image("cursor1.png");
-
+    boolean p1=true;
     List <Rectangle> rectangles=new ArrayList<>();
     int it=0;
-    final Board board=new Board();
+     TwoPlayersBoard board=new TwoPlayersBoard();
+     TwoPlayersBoard board2=new TwoPlayersBoard();
     int dir=1;
     int i=0;
     @FXML
@@ -67,23 +66,48 @@ public class HelloController{
                 System.out.println("i=" +i);
                 //wybieranie poszczególnych statków zaczynając od 2-poziomowych po ich ilości 2-4, 3-3 4-2 6-1
                 if (i < 4) {
-                    if(board.placeTheShip(i, 2,rowIndex.intValue(),colIndex.intValue(),dir)){
-                        i++;
+                    if(p1==true){
+                        if(board.placeTheShip(i, 2,rowIndex.intValue(),colIndex.intValue(),dir)){
+                            i++;
+                        }
+                    }else{
+                        if(board2.placeTheShip(i, 2,rowIndex.intValue(),colIndex.intValue(),dir)){
+                            i++;
+                        }
                     }
+
                 }
                 if (i >= 4 && i < 7) {
-                    if(board.placeTheShip(i, 3,rowIndex.intValue(),colIndex.intValue(),dir)){
-                        i++;
+                    if(p1==true){
+                        if(board.placeTheShip(i, 3,rowIndex.intValue(),colIndex.intValue(),dir)){
+                            i++;
+                        }
+                    }else{
+                        if(board2.placeTheShip(i, 3,rowIndex.intValue(),colIndex.intValue(),dir)){
+                            i++;
+                        }
                     }
                 }
                 if (i >= 7 && i < 9) {
-                    if(board.placeTheShip(i, 4,rowIndex.intValue(),colIndex.intValue(),dir)){
-                        i++;
+                    if(p1==true){
+                        if(board.placeTheShip(i, 4,rowIndex.intValue(),colIndex.intValue(),dir)){
+                            i++;
+                        }
+                    }else{
+                        if(board2.placeTheShip(i, 4,rowIndex.intValue(),colIndex.intValue(),dir)){
+                            i++;
+                        }
                     }
                 }
                 if (i == 9) {
-                    if(board.placeTheShip(i, 6,rowIndex.intValue(),colIndex.intValue(),dir)){
-                        i++;
+                    if(p1==true){
+                        if(board.placeTheShip(i, 6,rowIndex.intValue(),colIndex.intValue(),dir)){
+                            i++;
+                        }
+                    }else{
+                        if(board2.placeTheShip(i, 6,rowIndex.intValue(),colIndex.intValue(),dir)){
+                            i++;
+                        }
                     }
                 }
             }
@@ -92,21 +116,36 @@ public class HelloController{
     }
 
     public void crateRectangles(){
-
         for(int i=0;i<100;i++){
             double h=(GuiBoard.getHeight()-(10*GuiBoard.getHgap()))/10;
             double v=(GuiBoard.getWidth()-(10*GuiBoard.getVgap()))/10;
             rectangles.add(new Rectangle(h,v,GRAY));
         }
     }
-    public void startGame(ActionEvent e) throws IOException {
-
+    public void nextPlayer(ActionEvent e) throws IOException, CloneNotSupportedException {
         if(board.arePlaced()){
-            Board b1=board;
-            FXMLLoader fxmlLoader = new FXMLLoader(HelloApplication.class.getResource("aicp-arena.fxml"));
-            Scene scene = new Scene(fxmlLoader.load() ,1240, 920);
+            p1=false;
+            startGameButton.setDisable(false);
+
+            clearTable();
+            i=0;
+            colourTable();
+            nextPlayerButton.setDisable(true);
+        }
+
+    }
+    public void startGame(ActionEvent e) throws IOException {
+        if(board2.arePlaced()){
+            TwoPlayersBoard p1=board;
+            TwoPlayersBoard p2=board2;
+
+            List<TwoPlayersBoard> boards=new ArrayList<TwoPlayersBoard>();
+            boards.add(p1);
+            boards.add(p2);
+            FXMLLoader fxmlLoader = new FXMLLoader(HelloApplication.class.getResource("pvp-arena.fxml"));
+            Scene scene = new Scene(fxmlLoader.load() ,1240, 1000);
             Stage stage=(Stage) ((Node) e.getSource()).getScene().getWindow();
-            stage.setUserData(b1);
+            stage.setUserData(boards);
             stage.setScene(scene);
             stage.show();
         }
@@ -120,10 +159,18 @@ public class HelloController{
         clearTable();
         for(int i=0;i<10;i++){
             for(int j=0;j<10;j++){
-                if(board.board[i][j]==1){
-                    GuiBoard.add(rectangles.get(it),j,i);
-                    it++;
+                if(p1){
+                    if(board.board[i][j]==1){
+                        GuiBoard.add(rectangles.get(it),j,i);
+                        it++;
+                    }
+                }else{
+                    if(board2.board[i][j]==1){
+                        GuiBoard.add(rectangles.get(it),j,i);
+                        it++;
+                    }
                 }
+
             }
         }
 
@@ -136,6 +183,6 @@ public class HelloController{
     }
 
 
-    public void nextPlayer(ActionEvent event) {
-    }
+
+
 }

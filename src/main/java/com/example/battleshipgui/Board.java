@@ -14,11 +14,10 @@ public class Board {
     Ship[] ships = new Ship[numberOfShips];
     //utworzenie planszy do gry
     int[][] board=new int[boardSize][boardSize];
-    Scanner scanner=new Scanner(System.in);
     //litery uzywane do drukowania tablicy i odczytywania wejścia gracza
     static char[] letters = {'A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J'};
 
-    private void constructShips(){
+    void constructShips(){
         for(int i=0;i<10;i++){
             ships[i]= new Ship();
         }

@@ -40,9 +40,6 @@ public class ShipBattleController implements Initializable {
     int sqSize=50;
     Board board=new Board();
     AiBoard aiBoard=new AiBoard();
-    TwoPlayersBoard firstPlayerBoard=new TwoPlayersBoard();
-    TwoPlayersBoard secondPlayersBoard=new TwoPlayersBoard();
-    Timer timer=new Timer();
     int dir=1;
     int i=0;
     boolean o=true;
