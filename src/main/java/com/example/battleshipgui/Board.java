@@ -83,6 +83,22 @@ public class Board {
         }
         return false;
     }
+    public boolean shipDown(int x,int y){
+        int[][] position ;
+        int size;
+        //przeszukiwanie wszystkich statków statku o tej samej pozycji co x i y
+        for(int i = 0; i< 10; i++){
+            position= ships[i].getPosition();
+            size=ships[i].getSize();
+            for(int l = 0; l< size; l++){
+                if(position[l][0]==x && position[l][1]==y &&!ships[i].isAlive()){
+
+                    return true;
+                }
+            }
+        }
+        return false;
+    }
     public boolean isDown(int x,int y){
         int[][] position ;
         int size;

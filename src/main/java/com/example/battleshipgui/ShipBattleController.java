@@ -6,6 +6,7 @@ import javafx.event.Event;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.geometry.Pos;
 import javafx.scene.Node;
 import javafx.scene.Scene;
 import javafx.scene.control.DialogPane;
@@ -33,6 +34,7 @@ public class ShipBattleController implements Initializable {
     public Label endingMessage;
     @FXML
     public DialogPane endingPane;
+    public Label downLabel;
     List<Rectangle> rectangles=new ArrayList<>();
     List<Rectangle> eRectangles=new ArrayList<>();
     int it=0;
@@ -97,9 +99,7 @@ public class ShipBattleController implements Initializable {
                 }
             }
         }
-
     }
-
     public void colourEnemyTable(){
         for(int i=0;i<10;i++){
             for(int j=0;j<10;j++){
@@ -134,9 +134,15 @@ public class ShipBattleController implements Initializable {
             } else {
                 if (checkClicked(rowIndex, colIndex)) {
                     aiBoard.shotAt(rowIndex, colIndex);
+                    if(aiBoard.shipDown(rowIndex, colIndex)){
+                        downLabel.setText("Zatopiony");
+                        downLabel.setAlignment(Pos.TOP_CENTER);
+                    }
+                    else{downLabel.setText("");}
                     if(aiBoard.isEnded()) win();
                     board.shotAt();
                     if(board.isEnded()) lost();
+
                     clicked.add(new int[]{rowIndex.intValue(), colIndex.intValue()});
                 }
             }

@@ -143,7 +143,7 @@
             <Font size="32.0" />
          </font>
       </Label>
-      <Label layoutX="758.0" layoutY="36.0" text="Player Board">
+      <Label layoutX="799.0" layoutY="25.0" text="Player Board">
          <font>
             <Font size="32.0" />
          </font>
@@ -274,7 +274,7 @@
           <Region GridPane.columnIndex="9" GridPane.rowIndex="8" />
           <Region GridPane.columnIndex="9" GridPane.rowIndex="9" />
       </GridPane>
-      <DialogPane fx:id="startGameWindow" layoutX="364.0" layoutY="272.0" prefHeight="63.0" prefWidth="360.0">
+      <DialogPane fx:id="startGameWindow" layoutX="445.0" layoutY="277.0" prefHeight="63.0" prefWidth="360.0">
          <content>
             <Button contentDisplay="CENTER" mnemonicParsing="false" onAction="#receiveData" text="Click To start" textAlignment="CENTER">
                <font>
@@ -301,6 +301,10 @@
                </children></AnchorPane>
           </content>
       </DialogPane>
+      <Label alignment="TOP_CENTER" fx:id="downLabel" layoutX="497.0" layoutY="31.0" text="" textAlignment="CENTER">
+         <font>
+            <Font size="24.0" />
+         </font></Label>
    </children>
 
 </AnchorPane>
