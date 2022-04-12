@@ -11,7 +11,7 @@
             <Font size="39.0" />
          </font></Label>
       <Button alignment="CENTER" layoutX="135.0" layoutY="89.0" mnemonicParsing="false" onAction="#changeStage" text="Player VS Ai" />
-      <Button alignment="CENTER" layoutX="126.0" layoutY="137.0" mnemonicParsing="false" onAction="#PvPStart" text="Player vs Player" />
+      <Button alignment="CENTER" layoutX="141.0" layoutY="86.0" mnemonicParsing="false" onAction="#PvPStart" text="Player VS Player" />
       <Button alignment="CENTER" layoutX="141.0" layoutY="86.0" mnemonicParsing="false" onAction="#goToAiBattle" text="AI vs AI (AI test) " />
       <Button alignment="CENTER" layoutX="153.0" layoutY="180.0" mnemonicParsing="false" text="Exit" />
    </children>

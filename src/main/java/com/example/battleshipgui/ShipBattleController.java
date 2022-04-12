@@ -29,7 +29,9 @@ import static javafx.scene.paint.Color.*;
 public class ShipBattleController implements Initializable {
     @FXML
     public DialogPane startGameWindow;
+    @FXML
     public Label endingMessage;
+    @FXML
     public DialogPane endingPane;
     List<Rectangle> rectangles=new ArrayList<>();
     List<Rectangle> eRectangles=new ArrayList<>();

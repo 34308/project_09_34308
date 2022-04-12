@@ -547,11 +547,11 @@
                 </Button>
             </content>
         </DialogPane>
-        <DialogPane fx:id="endingPane" layoutX="307.0" layoutY="190.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="300.0" prefWidth="480.0">
+        <DialogPane fx:id="endingPane" layoutX="307.0" layoutY="190.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="300.0" prefWidth="480.0" visible="false">
             <header>
                 <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="200.0" prefWidth="320.0">
                     <children>
-                        <Label fx:id="endingMessage" alignment="CENTER" layoutX="8.0" layoutY="54.0" prefHeight="93.0" prefWidth="465.0" text="Label" textAlignment="CENTER" wrapText="true">
+                        <Label fx:id="endingMessage" alignment="CENTER" layoutX="8.0" layoutY="54.0" prefHeight="93.0" prefWidth="465.0" text="SECOND PLAYER WON" textAlignment="CENTER" wrapText="true">
                             <font>
                                 <Font size="36.0" />
                             </font>
