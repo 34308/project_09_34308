@@ -17,4 +17,20 @@ public class MenuController {
         stage.setScene(scene);
         stage.show();
     }
+
+    public void PvPStart(ActionEvent event) throws IOException {
+        FXMLLoader fxmlLoader = new FXMLLoader(HelloApplication.class.getResource("PlaceShipsPVP.fxml"));
+        Scene scene = new Scene(fxmlLoader.load() ,1000, 1000);
+        Stage stage=(Stage) ((Node) event.getSource()).getScene().getWindow();
+        stage.setScene(scene);
+        stage.show();
+    }
+
+    public void goToAiBattle(ActionEvent event) throws IOException {
+        FXMLLoader fxmlLoader = new FXMLLoader(HelloApplication.class.getResource("aivsai-arena.fxml"));
+        Scene scene = new Scene(fxmlLoader.load() ,1000, 1000);
+        Stage stage=(Stage) ((Node) event.getSource()).getScene().getWindow();
+        stage.setScene(scene);
+        stage.show();
+    }
 }

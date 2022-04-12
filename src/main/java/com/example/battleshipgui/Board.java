@@ -14,11 +14,10 @@ public class Board {
     Ship[] ships = new Ship[numberOfShips];
     //utworzenie planszy do gry
     int[][] board=new int[boardSize][boardSize];
-    Scanner scanner=new Scanner(System.in);
     //litery uzywane do drukowania tablicy i odczytywania wejścia gracza
     static char[] letters = {'A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J'};
 
-    private void constructShips(){
+    void constructShips(){
         for(int i=0;i<10;i++){
             ships[i]= new Ship();
         }
@@ -105,12 +104,12 @@ public class Board {
         int[] xy=new int[2];
 
         if(aiMemory.getState()==0){
-            System.out.println("0");
+
             aiMemory.miss=0;
             xy[0]=aiMemory.getX();
             xy[1]=aiMemory.getY();
             if(board[xy[0]][xy[1]]==1){
-                System.out.println("0-1");
+
                 hitShip(xy[0],xy[1]);
                 board[xy[0]][xy[1]]=9;
                 aiMemory.setState(1);
@@ -119,44 +118,43 @@ public class Board {
                 aiMemory.setY(xy[1]);
             }
             else if(board[xy[0]][xy[1]]==0){
-                System.out.println("0-0");
+
                 aiMemory.setFindNewShip();
                 board[xy[0]][xy[1]]=8;
             }else if(board[xy[0]][xy[1]]==9||board[xy[0]][xy[1]]==8){
-                System.out.println("0-R");
+
                 aiMemory.setFindNewShip();
                 shotAt();
             }
         }
         else if(aiMemory.getState()==1) {
-            System.out.println("1");
+
             xy = aiMemory.nextShotCord();
             if (board[xy[0]][xy[1]] == 1) {
-                System.out.println("1-1");
+
                 hitShip(xy[0], xy[1]);
                 board[xy[0]][xy[1]] = 9;
                 if (isDown(xy[0], xy[1])) {
-                    System.out.println("1-1-1");
                     aiMemory.setFindNewShip();
                     aiMemory.setState(0);
                 } else {
-                    System.out.println("1-1-2");
+
                     aiMemory.setX(xy[0]);
                     aiMemory.setY(xy[1]);
                 }
             } else if (board[xy[0]][xy[1]] == 0) {
-                System.out.println("1-0");
+
                 board[xy[0]][xy[1]] = 8;
                 aiMemory.getBackToCenter();
                 aiMemory.nextCurrent();
 
             } else if (board[xy[0]][xy[1]] == 9 || board[xy[0]][xy[1]] == 8) {
-                System.out.println("1-R");
+
                 aiMemory.setFindNewShip();
                 shotAt();
             }
         }
-        System.out.println("------------------------------");
+
        aiMemory.copyBoard(board.clone());
     }
     public boolean arePlaced(){
@@ -207,7 +205,7 @@ public class Board {
         if (checkPlace(x, y, dir, currentShipSize)) {
             //JEZELI TAK WSTAW STATEK
             ships[currentShipNumber].changeShip(currentShipSize, generatePosition(currentShipSize, x, y, dir));
-            showPlayerBoard();
+
 
         } else//JEZELI NIE WYSWIETL KOMUNIKAT O BLEDZIE
         {
@@ -370,7 +368,7 @@ public class Board {
             }
         }
         for (int i = 0; i < size; i++) {
-            System.out.println("11111111111111");
+
             //PRZEPISUJE POZYCJE STATKU NA TABLICE
             board[position[i][0]][position[i][1]]=1;
         }

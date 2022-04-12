@@ -33,7 +33,7 @@ public class AiMemory {
     }
     public int[] nextShotCord(){
         int[] xy=new  int[]{};
-        System.out.println("cur"+ current);
+
         if(current==1){
             xy=new int[] {x+1,y};
         }

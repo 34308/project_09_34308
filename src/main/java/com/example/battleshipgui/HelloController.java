@@ -26,7 +26,6 @@ import static javafx.scene.paint.Color.*;
 
 public class HelloController{
     Image image = new Image("cursor1.png");
-
     List <Rectangle> rectangles=new ArrayList<>();
     int it=0;
     final Board board=new Board();
@@ -37,7 +36,6 @@ public class HelloController{
 
 
     public void placeShip(MouseEvent e) throws IOException {
-
         crateRectangles();
         if(e.getButton()== MouseButton.SECONDARY){
             dir++;
@@ -46,7 +44,7 @@ public class HelloController{
             }
             image = new Image("cursor"+dir+".png");
             GuiBoard.getScene().getRoot().setCursor(new ImageCursor(image,image.getWidth()/2,image.getHeight()/2));
-            System.out.println(dir);
+
         }
         if(e.getButton()==MouseButton.PRIMARY){
             Node target = (Node) e.getTarget();
@@ -62,9 +60,9 @@ public class HelloController{
             if (colIndex == null || rowIndex == null) {
                 System.out.println("BOO");
             } else {
-                System.out.println(rowIndex+" "+colIndex);
+
                 //System.out.printf("Mouse entered cell [%d, %d]%n", colIndex.intValue(), rowIndex.intValue());
-                System.out.println("i=" +i);
+
                 //wybieranie poszczególnych statków zaczynając od 2-poziomowych po ich ilości 2-4, 3-3 4-2 6-1
                 if (i < 4) {
                     if(board.placeTheShip(i, 2,rowIndex.intValue(),colIndex.intValue(),dir)){
@@ -101,7 +99,7 @@ public class HelloController{
     public void startGame(ActionEvent e) throws IOException {
         if(board.arePlaced()){
             Board b1=board;
-            FXMLLoader fxmlLoader = new FXMLLoader(HelloApplication.class.getResource("AiVsPArena.fxml"));
+            FXMLLoader fxmlLoader = new FXMLLoader(HelloApplication.class.getResource("aicp-arena.fxml"));
             Scene scene = new Scene(fxmlLoader.load() ,1240, 920);
             Stage stage=(Stage) ((Node) e.getSource()).getScene().getWindow();
             stage.setUserData(b1);
@@ -134,6 +132,6 @@ public class HelloController{
     }
 
 
-
-
+    public void nextPlayer(ActionEvent event) {
+    }
 }

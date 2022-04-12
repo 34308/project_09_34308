@@ -49,7 +49,7 @@ public class AiBoard extends Board{
     //ODCZYTYWANIE POZYCJI Z PLIKU I PRZENOSZENIE ICH NA TABLICE
     public void addAiShips() throws FileNotFoundException, IncorrectFileException {
         Random rand = new Random();
-        int fileNumber = rand.nextInt(1,3);
+        int fileNumber = rand.nextInt(1,5);
         File file = new File("scheme"+fileNumber+".txt");
         FileValidator fileValidator=new FileValidator();
         if(!fileValidator.isValid(file)){
@@ -96,7 +96,7 @@ public class AiBoard extends Board{
             }
         }
         if(it==10){
-            System.out.println("Gracz wygrał!!");
+           // System.out.println("Gracz wygrał!!");
             return true;
 
         }else{
