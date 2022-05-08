@@ -1,0 +1,14 @@
+GridPane{
+    -fx-background-color:  #71D4E5
+}
+
+.root{
+    -fx-background-color:  #1E8597
+}
+.label{
+      -fx-background-color:  #00D5FA
+      -fx-background-radius= 15
+}
+.button,.menu-button,.split-menu-button,.toggle-button,.number-button {
+	-fx-background-insets: 0, 0, -1, 0;
+}
