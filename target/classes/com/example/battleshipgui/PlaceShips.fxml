@@ -5,7 +5,7 @@
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.text.*?>
 
-<BorderPane nodeOrientation="LEFT_TO_RIGHT" prefHeight="800.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.battleshipgui.HelloController">
+<BorderPane nodeOrientation="LEFT_TO_RIGHT" onMouseEntered="#setCursor" prefHeight="800.0" prefWidth="800.0" stylesheets="style.css" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.battleshipgui.PlaceShip">
       <center>
           <GridPane fx:id="GuiBoard" alignment="CENTER" gridLinesVisible="true" onMouseClicked="#placeShip" prefHeight="500.0" prefWidth="500.0" BorderPane.alignment="CENTER">
               <columnConstraints>
@@ -144,15 +144,18 @@
       <right>
          <VBox alignment="TOP_CENTER" prefHeight="200.0" prefWidth="150.0" BorderPane.alignment="CENTER">
             <children>
-               <Button alignment="CENTER" contentDisplay="CENTER" mnemonicParsing="false" nodeOrientation="LEFT_TO_RIGHT" onAction="#resetShips" text="Reset ship Placement" textAlignment="CENTER" />
+               <Button alignment="CENTER" contentDisplay="CENTER" mnemonicParsing="false" nodeOrientation="LEFT_TO_RIGHT" onAction="#resetShips" style="-fx-background-insets: 0,0,-1,0;" text="Reset ship Placement" textAlignment="CENTER" />
             <VBox prefHeight="50.0" prefWidth="100.0" />
-               <Button alignment="CENTER" contentDisplay="CENTER" mnemonicParsing="false" onAction="#startGame" text="Start Game" textAlignment="CENTER" />
+               <Button alignment="CENTER" contentDisplay="CENTER" mnemonicParsing="false" onAction="#startGame" style="-fx-background-insets: 0,0,-1,0;" text="Start Game" textAlignment="CENTER" />
             <Label text="Left Click To Place, Right click to rotate" textAlignment="CENTER" wrapText="true" />
             </children>
          </VBox>
       </right>
    <left>
-      <VBox prefHeight="200.0" prefWidth="100.0" BorderPane.alignment="CENTER" />
+      <VBox alignment="TOP_CENTER" prefHeight="200.0" prefWidth="100.0" BorderPane.alignment="CENTER">
+         <children>
+            <Button alignment="TOP_CENTER" mnemonicParsing="false" onAction="#Return" styleClass=".button" text="Return" />
+         </children></VBox>
    </left>
    <bottom>
       <VBox prefHeight="200.0" prefWidth="100.0" BorderPane.alignment="CENTER" />

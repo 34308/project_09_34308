@@ -8,6 +8,7 @@ import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.geometry.Pos;
 import javafx.scene.Node;
+import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.DialogPane;
 import javafx.scene.control.Label;
@@ -38,8 +39,6 @@ public class ShipBattleController implements Initializable {
     List<Rectangle> rectangles=new ArrayList<>();
     List<Rectangle> eRectangles=new ArrayList<>();
     int it=0;
-
-
     int eit=0;
     int sqSize=50;
     Board board=new Board();
@@ -53,17 +52,6 @@ public class ShipBattleController implements Initializable {
     GridPane AIBoard;
     ArrayList<int[]> clicked=new ArrayList<int[]>();
 
-    @FXML
-    private void receiveData(Event event) {
-        // Step 1
-        Node node = (Node) event.getSource();
-        Stage stage = (Stage) node.getScene().getWindow();
-        // Step 2
-        board = (Board) stage.getUserData();
-        PlayerBoard.setDisable(false);
-        AIBoard.setDisable(false);
-        startGameWindow.setVisible(false);
-    }
 
 
     public void crateRectangles(){
@@ -71,7 +59,6 @@ public class ShipBattleController implements Initializable {
             rectangles.add(new Rectangle(sqSize,sqSize,GRAY));
             eRectangles.add(new Rectangle(sqSize,sqSize,GRAY));
         }
-
     }
     public void clearTable(){
         AIBoard.getChildren().removeAll(eRectangles);
@@ -175,7 +162,6 @@ public class ShipBattleController implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         aiBoard=new AiBoard();
-
         try {
             aiBoard.addAiShips();
         } catch (FileNotFoundException e) {
@@ -184,8 +170,6 @@ public class ShipBattleController implements Initializable {
             e.printStackTrace();
         }
         crateRectangles();
-        PlayerBoard.setDisable(true);
-        AIBoard.setDisable(true);
     }
 
     public void goToMenu(ActionEvent e) throws IOException {
@@ -194,5 +178,20 @@ public class ShipBattleController implements Initializable {
         Stage stage=(Stage) ((Node) e.getSource()).getScene().getWindow();
         stage.setScene(scene);
         stage.show();
+    }
+    public void Return(ActionEvent event) throws IOException {
+        FXMLLoader fxmlLoader = new FXMLLoader(HelloApplication.class.getResource("Menu.fxml"));
+        Parent root=fxmlLoader.load();
+        Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+        stage.setResizable(false);
+        Scene scene=new Scene(root);
+        stage.setScene(scene);
+        stage.show();
+    }
+    public void setBoard(Board board) {
+
+        this.board = board;
+        colourEnemyTable();
+        colourTable();
     }
 }

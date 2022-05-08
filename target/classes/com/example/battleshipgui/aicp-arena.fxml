@@ -5,7 +5,7 @@
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.text.*?>
 
-<AnchorPane prefHeight="698.0" prefWidth="1226.0" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.battleshipgui.ShipBattleController">
+<AnchorPane prefHeight="698.0" prefWidth="1226.0" stylesheets="style.css" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.battleshipgui.ShipBattleController">
     <padding>
         <Insets bottom="20.0" left="20.0" right="20.0" top="20.0" />
     </padding>
@@ -274,15 +274,6 @@
           <Region GridPane.columnIndex="9" GridPane.rowIndex="8" />
           <Region GridPane.columnIndex="9" GridPane.rowIndex="9" />
       </GridPane>
-      <DialogPane fx:id="startGameWindow" layoutX="445.0" layoutY="277.0" prefHeight="63.0" prefWidth="360.0">
-         <content>
-            <Button contentDisplay="CENTER" mnemonicParsing="false" onAction="#receiveData" text="Click To start" textAlignment="CENTER">
-               <font>
-                  <Font size="24.0" />
-               </font>
-            </Button>
-         </content>
-      </DialogPane>
       <DialogPane fx:id="endingPane" layoutX="307.0" layoutY="190.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="300.0" prefWidth="480.0" visible="false">
           <header>
             <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="200.0" prefWidth="320.0">
@@ -301,10 +292,11 @@
                </children></AnchorPane>
           </content>
       </DialogPane>
-      <Label alignment="TOP_CENTER" fx:id="downLabel" layoutX="497.0" layoutY="31.0" text="" textAlignment="CENTER">
+      <Label fx:id="downLabel" alignment="TOP_CENTER" layoutX="497.0" layoutY="31.0" style="-fx-background-color: #00D5FA; -fx-background-radius: 15;" text="" textAlignment="CENTER">
          <font>
             <Font size="24.0" />
          </font></Label>
+      <Button layoutX="14.0" layoutY="25.0" mnemonicParsing="false" onAction="#Return" text="Return" />
    </children>
 
 </AnchorPane>

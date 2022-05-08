@@ -5,7 +5,7 @@
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.text.*?>
 
-<AnchorPane prefHeight="813.0" prefWidth="1200.0" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.battleshipgui.AiBattle">
+<AnchorPane prefHeight="813.0" prefWidth="1200.0" stylesheets="style.css" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.battleshipgui.AiBattle">
     <padding>
         <Insets bottom="20.0" left="20.0" right="20.0" top="20.0" />
     </padding>
@@ -148,14 +148,14 @@
 
             </children>
         </AnchorPane>
-        <AnchorPane layoutX="651.0" layoutY="25.0" prefHeight="805.0" prefWidth="500.0">
+        <AnchorPane layoutX="663.0" layoutY="26.0" prefHeight="805.0" prefWidth="500.0">
             <children>
                 <Label layoutX="223.0" layoutY="22.0" text="AI II">
                     <font>
                         <Font size="32.0" />
                     </font>
                 </Label>
-                <GridPane fx:id="Ai2" alignment="CENTER" disable="true" gridLinesVisible="true" layoutY="69.0" prefHeight="500.0" prefWidth="500.0">
+                <GridPane fx:id="Ai2" alignment="CENTER" disable="true" gridLinesVisible="true" layoutY="69.0" prefHeight="500.0" prefWidth="500.0" styleClass="Ai2">
                     <columnConstraints>
                         <ColumnConstraints fillWidth="true" hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
                         <ColumnConstraints fillWidth="true" hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
@@ -284,7 +284,7 @@
 
             </children>
         </AnchorPane>
-      <Button layoutX="564.0" layoutY="222.0" mnemonicParsing="false" onAction="#shoot" text="next move" />
+      <Button layoutX="564.0" layoutY="224.0" mnemonicParsing="false" onAction="#shoot" text="next move" textAlignment="CENTER" />
       
         <DialogPane fx:id="endingPane" layoutX="307.0" layoutY="190.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="300.0" prefWidth="480.0" visible="false">
             <header>
@@ -304,6 +304,7 @@
                     </children></AnchorPane>
             </content>
         </DialogPane>
+      <Button layoutX="41.0" layoutY="26.0" mnemonicParsing="false" onAction="#Return" text="Return" />
     </children>
 
 </AnchorPane>

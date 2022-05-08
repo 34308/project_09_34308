@@ -4,15 +4,15 @@
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.text.*?>
 
-<VBox alignment="TOP_CENTER" prefHeight="342.0" prefWidth="341.0" spacing="20" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.battleshipgui.MenuController">
+<VBox alignment="TOP_CENTER" prefHeight="342.0" prefWidth="341.0" spacing="20" stylesheets="style.css" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.battleshipgui.MenuController">
    <children>
       <Label alignment="TOP_CENTER" layoutX="80.0" layoutY="14.0" text="BattleShips" textAlignment="CENTER">
          <font>
             <Font size="39.0" />
          </font></Label>
-      <Button alignment="CENTER" layoutX="135.0" layoutY="89.0" mnemonicParsing="false" onAction="#changeStage" text="Player VS Ai" />
-      <Button alignment="CENTER" layoutX="141.0" layoutY="86.0" mnemonicParsing="false" onAction="#PvPStart" text="Player VS Player" />
-      <Button alignment="CENTER" layoutX="141.0" layoutY="86.0" mnemonicParsing="false" onAction="#goToAiBattle" text="AI vs AI (AI test) " />
-      <Button alignment="CENTER" layoutX="153.0" layoutY="180.0" mnemonicParsing="false" text="Exit" />
+      <Button alignment="CENTER" layoutX="135.0" layoutY="89.0" mnemonicParsing="false" onAction="#changeStage" style="-fx-background-insets: 0, 0, -1, 0;" styleClass=".button" text="Player VS Ai" />
+      <Button alignment="CENTER" layoutX="141.0" layoutY="86.0" mnemonicParsing="false" onAction="#PvPStart" style="-fx-background-insets: 0, 0, -1, 0;" text="Player VS Player" />
+      <Button alignment="CENTER" layoutX="141.0" layoutY="86.0" mnemonicParsing="false" onAction="#goToAiBattle" style="-fx-background-insets: 0, 0, -1, 0;" text="AI vs AI (AI test) " />
+      <Button onAction="#exit" alignment="CENTER" layoutX="153.0" layoutY="180.0" mnemonicParsing="false" style="-fx-background-insets: 0, 0, -1, 0;" text="Exit" />
    </children>
 </VBox>

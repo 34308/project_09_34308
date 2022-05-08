@@ -5,9 +5,9 @@
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.text.*?>
 
-<BorderPane nodeOrientation="LEFT_TO_RIGHT" prefHeight="800.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.battleshipgui.PlaceShipsPVPController">
+<BorderPane nodeOrientation="LEFT_TO_RIGHT" prefHeight="800.0" prefWidth="800.0" stylesheets="style.css" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.battleshipgui.PlaceShipsPVPController">
       <center>
-          <GridPane fx:id="GuiBoard" alignment="CENTER" gridLinesVisible="true" onMouseClicked="#placeShip" prefHeight="500.0" prefWidth="500.0" BorderPane.alignment="CENTER">
+          <GridPane fx:id="GuiBoard" alignment="CENTER" gridLinesVisible="true" onMouseClicked="#placeShip" onMouseEntered="#setCursor" prefHeight="500.0" prefWidth="500.0" BorderPane.alignment="CENTER">
               <columnConstraints>
                   <ColumnConstraints fillWidth="true" halignment="CENTER" hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
                   <ColumnConstraints fillWidth="true" halignment="CENTER" hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
@@ -144,17 +144,20 @@
       <right>
          <VBox alignment="TOP_CENTER" prefHeight="200.0" prefWidth="150.0" BorderPane.alignment="CENTER">
             <children>
-               <Button alignment="CENTER" contentDisplay="CENTER" mnemonicParsing="false" nodeOrientation="LEFT_TO_RIGHT" onAction="#resetShips" text="Reset ship Placement" textAlignment="CENTER" />
+               <Button alignment="CENTER" contentDisplay="CENTER" mnemonicParsing="false" nodeOrientation="LEFT_TO_RIGHT" onAction="#resetShips" style="-fx-background-insets: 0,0,-1,0;" text="Reset ship Placement" textAlignment="CENTER" />
             <VBox prefHeight="50.0" prefWidth="100.0" />
-               <Button fx:id="nextPlayerButton" alignment="CENTER" contentDisplay="CENTER" mnemonicParsing="false" onAction="#nextPlayer" text="nextPlayer" textAlignment="CENTER" />
+               <Button fx:id="nextPlayerButton" alignment="CENTER" contentDisplay="CENTER" mnemonicParsing="false" onAction="#nextPlayer" style="-fx-background-insets: 0,0,-1,0;" text="nextPlayer" textAlignment="CENTER" />
             <Label text="Left Click To Place, Right click to rotate" textAlignment="CENTER" wrapText="true" />
             <VBox layoutX="10.0" layoutY="35.0" prefHeight="50.0" prefWidth="100.0" />
-            <Button fx:id="startGameButton" alignment="CENTER" contentDisplay="CENTER" disable="true" layoutX="50.0" layoutY="85.0" mnemonicParsing="false" onAction="#startGame" text="Start Game" textAlignment="CENTER" />
+            <Button fx:id="startGameButton" alignment="CENTER" contentDisplay="CENTER" disable="true" layoutX="50.0" layoutY="85.0" mnemonicParsing="false" onAction="#startGame" style="-fx-background-insets: 0,0,-1,0;" text="Start Game" textAlignment="CENTER" />
             </children>
          </VBox>
       </right>
    <left>
-      <VBox prefHeight="200.0" prefWidth="100.0" BorderPane.alignment="CENTER" />
+      <VBox alignment="TOP_CENTER" prefHeight="200.0" prefWidth="100.0" BorderPane.alignment="CENTER">
+         <children>
+            <Button onAction="#Return" alignment="TOP_CENTER" mnemonicParsing="false" text="Return" />
+         </children></VBox>
    </left>
    <bottom>
       <VBox prefHeight="200.0" prefWidth="100.0" BorderPane.alignment="CENTER" />

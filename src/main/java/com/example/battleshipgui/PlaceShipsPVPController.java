@@ -5,6 +5,7 @@ import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.ImageCursor;
 import javafx.scene.Node;
+import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.image.Image;
@@ -34,9 +35,12 @@ public class PlaceShipsPVPController {
     @FXML
     GridPane GuiBoard;
 
+    public void setCursor(){
+        image = new Image("cursor"+dir+".png");
+        GuiBoard.getScene().getRoot().setCursor(new ImageCursor(image,image.getWidth()/2,image.getHeight()/2));
+    }
 
     public void placeShip(MouseEvent e) throws IOException {
-
         crateRectangles();
         if(e.getButton()== MouseButton.SECONDARY){
             dir++;
@@ -78,7 +82,7 @@ public class PlaceShipsPVPController {
 
                 }
                 if (i >= 4 && i < 7) {
-                    if(p1==true){
+                    if(p1){
                         if(board.placeTheShip(i, 3,rowIndex.intValue(),colIndex.intValue(),dir)){
                             i++;
                         }
@@ -136,16 +140,13 @@ public class PlaceShipsPVPController {
     }
     public void startGame(ActionEvent e) throws IOException {
         if(board2.arePlaced()){
-            TwoPlayersBoard p1=board;
-            TwoPlayersBoard p2=board2;
-
-            List<TwoPlayersBoard> boards=new ArrayList<TwoPlayersBoard>();
-            boards.add(p1);
-            boards.add(p2);
             FXMLLoader fxmlLoader = new FXMLLoader(HelloApplication.class.getResource("pvp-arena.fxml"));
-            Scene scene = new Scene(fxmlLoader.load() ,1240, 1000);
-            Stage stage=(Stage) ((Node) e.getSource()).getScene().getWindow();
-            stage.setUserData(boards);
+            Parent root=fxmlLoader.load();
+            ShipBattleControllerPVP shipBattleController =fxmlLoader.getController();
+            shipBattleController.receiveData(board,board2);
+            Stage stage = (Stage) ((Node) e.getSource()).getScene().getWindow();
+            stage.setResizable(false);
+            Scene scene=new Scene(root,1240, 1000);
             stage.setScene(scene);
             stage.show();
         }
@@ -176,13 +177,29 @@ public class PlaceShipsPVPController {
 
     }
     public void resetShips(ActionEvent event) {
-        board.resetShips();
-        clearTable();
-        i=0;
-        colourTable();
+        if(p1){
+            board.resetShips();
+            clearTable();
+            i=0;
+            colourTable();
+        }
+        else{
+            board2.resetShips();
+            clearTable();
+            i=0;
+            colourTable();
+        }
+
     }
 
 
-
-
+    public void Return(ActionEvent event) throws IOException {
+        FXMLLoader fxmlLoader = new FXMLLoader(HelloApplication.class.getResource("Menu.fxml"));
+        Parent root=fxmlLoader.load();
+        Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+        stage.setResizable(false);
+        Scene scene=new Scene(root);
+        stage.setScene(scene);
+        stage.show();
+    }
 }

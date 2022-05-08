@@ -7,12 +7,14 @@ import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Node;
+import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.DialogPane;
 import javafx.scene.control.Label;
 import javafx.scene.input.MouseButton;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.GridPane;
+import javafx.scene.shape.Circle;
 import javafx.scene.shape.Rectangle;
 import javafx.stage.Stage;
 
@@ -35,35 +37,28 @@ public class ShipBattleControllerPVP implements Initializable {
     public GridPane player2;
     public GridPane ViewPlayer2;
     public GridPane ViewPlayer1;
+    public Circle Player1Light;
+    public Circle Player2Light;
     List<Rectangle> rectangles=new ArrayList<>();
     List<Rectangle> eRectangles=new ArrayList<>();
     List<Rectangle> rectangles2=new ArrayList<>();
     List<Rectangle> eRectangles2=new ArrayList<>();
     int it=0;
-    boolean k=true;
     int eit=0;
     TwoPlayersBoard firstPlayerBoard=new TwoPlayersBoard();
     TwoPlayersBoard secondPlayersBoard=new TwoPlayersBoard();
-    int dir=1;
     ArrayList<int[]> clicked=new ArrayList<int[]>();
     ArrayList<int[]> clicked2=new ArrayList<int[]>();
+    boolean check=false;
 
     @FXML
-    private void receiveData(Event event) {
-        // Step 1
-        Node node = (Node) event.getSource();
-        Stage stage = (Stage) node.getScene().getWindow();
-        // Step 2
-        List <TwoPlayersBoard> boards= (List<TwoPlayersBoard>) stage.getUserData();
-        firstPlayerBoard = boards.get(0);
-        secondPlayersBoard = boards.get(1);
+    public void receiveData(TwoPlayersBoard board,TwoPlayersBoard board2) {
+        firstPlayerBoard =board;
+        secondPlayersBoard = board2;
 
         firstPlayerBoard.showPlayerBoard();
         secondPlayersBoard.showPlayerBoard();
 
-        player2.setDisable(false);
-        player1.setDisable(false);
-        startGameWindow.setVisible(false);
     }
 
 
@@ -88,7 +83,6 @@ public class ShipBattleControllerPVP implements Initializable {
         it=0;
         eit=0;
     }
-
 
     public void colourP2(){
         for(int i=0;i<10;i++){
@@ -147,7 +141,7 @@ public class ShipBattleControllerPVP implements Initializable {
     }
 
     public void firstShoot(MouseEvent e) {
-        crateRectangles();
+
         if(e.getButton()== MouseButton.PRIMARY){
             Node target = (Node) e.getTarget();
             // traverse towards root until userSelectionGrid is the parent node
@@ -168,6 +162,8 @@ public class ShipBattleControllerPVP implements Initializable {
                     clicked.add(new int[]{rowIndex.intValue(), colIndex.intValue()});
                     player2.setDisable(false);
                     player1.setDisable(true);
+                    Player2Light.setVisible(true);
+                    Player1Light.setVisible(false);
                 }
             }
         }
@@ -198,6 +194,8 @@ public class ShipBattleControllerPVP implements Initializable {
                     clicked2.add(new int[]{rowIndex.intValue(), colIndex.intValue()});
                     player2.setDisable(true);
                     player1.setDisable(false);
+                    Player2Light.setVisible(false);
+                    Player1Light.setVisible(true);
                 }
             }
         }
@@ -229,20 +227,36 @@ public class ShipBattleControllerPVP implements Initializable {
     }
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
-        player2.setDisable(true);
-        player1.setDisable(true);
+
+        Player1Light.setVisible(true);
     }
 
     public void goToMenu(ActionEvent e) throws IOException {
         FXMLLoader fxmlLoader = new FXMLLoader(HelloApplication.class.getResource("Menu.fxml"));
         Scene scene = new Scene(fxmlLoader.load() ,300, 300);
         Stage stage=(Stage) ((Node) e.getSource()).getScene().getWindow();
+
         stage.setScene(scene);
         stage.show();
     }
 
-
-
+    public void setShips(MouseEvent mouseEvent) {
+        if(!check){
+            crateRectangles();
+            colourP2();
+            colourP1();
+            check=true;
+        }
+    }
+    public void Return(ActionEvent event) throws IOException {
+        FXMLLoader fxmlLoader = new FXMLLoader(HelloApplication.class.getResource("Menu.fxml"));
+        Parent root=fxmlLoader.load();
+        Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+        stage.setResizable(false);
+        Scene scene=new Scene(root);
+        stage.setScene(scene);
+        stage.show();
+    }
 }
 
 

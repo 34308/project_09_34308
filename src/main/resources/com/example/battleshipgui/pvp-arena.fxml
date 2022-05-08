@@ -3,9 +3,10 @@
 <?import javafx.geometry.*?>
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
+<?import javafx.scene.shape.*?>
 <?import javafx.scene.text.*?>
 
-<AnchorPane prefHeight="813.0" prefWidth="1200.0" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.battleshipgui.ShipBattleControllerPVP">
+<AnchorPane onMouseEntered="#setShips" prefHeight="813.0" prefWidth="1200.0" stylesheets="style.css" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.battleshipgui.ShipBattleControllerPVP">
     <padding>
         <Insets bottom="20.0" left="20.0" right="20.0" top="20.0" />
     </padding>
@@ -538,15 +539,6 @@
             </GridPane>
          </children>
       </AnchorPane>
-        <DialogPane fx:id="startGameWindow" layoutX="420.0" layoutY="263.0" prefHeight="63.0" prefWidth="360.0">
-            <content>
-                <Button contentDisplay="CENTER" mnemonicParsing="false" onAction="#receiveData" text="Click To start" textAlignment="CENTER">
-                    <font>
-                        <Font size="24.0" />
-                    </font>
-                </Button>
-            </content>
-        </DialogPane>
         <DialogPane fx:id="endingPane" layoutX="307.0" layoutY="190.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="300.0" prefWidth="480.0" visible="false">
             <header>
                 <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="200.0" prefWidth="320.0">
@@ -565,6 +557,9 @@
                     </children></AnchorPane>
             </content>
         </DialogPane>
+        <Circle fx:id="Player1Light" fill="#1fff5c" layoutX="45.0" layoutY="46.0" radius="38.0" stroke="BLACK" strokeType="INSIDE" visible="false" />
+        <Circle fx:id="Player2Light" fill="#1fff5c" layoutX="1150.0" layoutY="50.0" radius="38.0" stroke="BLACK" strokeType="INSIDE" visible="false" />
+      <Button layoutX="572.0" layoutY="38.0" mnemonicParsing="false" onAction="#Return" text="Return" />
     </children>
 
 </AnchorPane>
