@@ -51,7 +51,7 @@
 
 <p>In this game mode the only thing observer can do is enabling next move of AI's</p>
 <p align="center">
-    <"images/AIBattle.png">
+    <img src="images/AIBattle.png" alt="Screenshot">
 </p>
 
 <p>game stops after one of sides doesn't have any unsunken ships</p>
