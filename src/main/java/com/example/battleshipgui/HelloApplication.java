@@ -31,36 +31,6 @@ public class HelloApplication extends Application {
         ArrayList<Rectangle> rectangles=new ArrayList<Rectangle>();
 
 
-       // GridPane gridPane = new GridPane();
-       // Canvas canvas;
-
-
-       /* for(int j=0;j<100;j++){
-            rectangles.add(new Rectangle(20,20,Color.GRAY));
-        }
-        eventHandler = new EventHandler<MouseEvent>() {
-                @Override
-                public void handle(MouseEvent e) {
-                    System.out.println("Hello World"+GridPane.getColumnIndex((Node)e.getSource()));
-
-
-                }
-        };
-        int j=0;
-        for (int x=0;x<10;x++){
-            for (int i=0;i<10;i++){
-                gridPane.addEventFilter(MOUSE_CLICKED,eventHandler);
-                gridPane.add(rectangles.get(j),x,i);
-                j++;
-            }
-        }
-
-        gridPane.setGridLinesVisible(true);
-        Scene scene = new Scene(gridPane, 520, 440);
-        stage.setScene(scene);
-        stage.show();
-
-        */
 
         Scene scene = new Scene(fxmlLoader.load() ,340, 380);
         stage.setScene(scene);

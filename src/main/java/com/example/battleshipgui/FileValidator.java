@@ -8,14 +8,14 @@ import java.util.Scanner;
 
 public class FileValidator {
     final int boardSize=10;
-    ArrayList<int[]>  forbiddenPositions=new ArrayList();
+    ArrayList<int[]>  forbiddenPositions=new ArrayList<>();
 
     public boolean isValid(File file) throws FileNotFoundException {
         Scanner sc = new Scanner(file);
         String line;
-        int x=0;int y=0;int li=0;
+        int x;int y;int li;
         while (sc.hasNext()) {
-            x=0; y=0; li=0;
+            li=0;
             line = sc.nextLine();
             String[] splitedLine = line.split(" ");
             int sizeOfShip = splitedLine.length;
@@ -47,8 +47,8 @@ public class FileValidator {
     }
 
     private void addAllForbiddenPositions(int li){
-        int x=0;
-        int y=0;
+        int x;
+        int y;
         int size=forbiddenPositions.size();
         for(int i=size-1;i>=size-li;i--){
             x=forbiddenPositions.get(i)[0];
@@ -68,9 +68,9 @@ public class FileValidator {
     }
 
     private boolean isPositionValid(int x,int y){
-        for(int j=0;j<forbiddenPositions.size();j++){
-            if(forbiddenPositions.get(j)[0]==x&&forbiddenPositions.get(j)[1]==y){
-                System.out.println(forbiddenPositions.get(j)[0]+" "+forbiddenPositions.get(j)[1]);
+        for (int[] forbiddenPosition : forbiddenPositions) {
+            if (forbiddenPosition[0] == x && forbiddenPosition[1] == y) {
+                System.out.println(forbiddenPosition[0] + " " + forbiddenPosition[1]);
                 return false;
             }
         }

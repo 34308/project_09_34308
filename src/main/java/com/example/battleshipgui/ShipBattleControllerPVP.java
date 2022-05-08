@@ -1,8 +1,5 @@
 package com.example.battleshipgui;
-
-import com.example.battleshipgui.exeptions.IncorrectFileException;
 import javafx.event.ActionEvent;
-import javafx.event.Event;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
@@ -17,9 +14,6 @@ import javafx.scene.layout.GridPane;
 import javafx.scene.shape.Circle;
 import javafx.scene.shape.Rectangle;
 import javafx.stage.Stage;
-
-
-import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.net.URL;
 import java.util.ArrayList;
@@ -30,7 +24,6 @@ import static javafx.scene.paint.Color.*;
 
 public class ShipBattleControllerPVP implements Initializable {
     @FXML
-    public DialogPane startGameWindow;
     public Label endingMessage;
     public DialogPane endingPane;
     public GridPane player1;
@@ -47,8 +40,8 @@ public class ShipBattleControllerPVP implements Initializable {
     int eit=0;
     TwoPlayersBoard firstPlayerBoard=new TwoPlayersBoard();
     TwoPlayersBoard secondPlayersBoard=new TwoPlayersBoard();
-    ArrayList<int[]> clicked=new ArrayList<int[]>();
-    ArrayList<int[]> clicked2=new ArrayList<int[]>();
+    ArrayList<int[]> clicked=new ArrayList<>();
+    ArrayList<int[]> clicked2=new ArrayList<>();
     boolean check=false;
 
     @FXML
@@ -151,15 +144,15 @@ public class ShipBattleControllerPVP implements Initializable {
                     target = parent;
                 }
             }
-            Integer colIndex = player1.getColumnIndex(target);
-            Integer rowIndex = player1.getRowIndex(target);
+            Integer colIndex = GridPane.getColumnIndex(target);
+            Integer rowIndex = GridPane.getRowIndex(target);
             if (colIndex == null || rowIndex == null) {
                 System.out.println("BOO");
             } else {
                 if (checkClicked(clicked,rowIndex, colIndex)) {
-                    secondPlayersBoard.shotAt(rowIndex.intValue(), colIndex.intValue());
+                    secondPlayersBoard.shotAt(rowIndex, colIndex);
                     if(secondPlayersBoard.isEnded()) firstWin();
-                    clicked.add(new int[]{rowIndex.intValue(), colIndex.intValue()});
+                    clicked.add(new int[]{rowIndex, colIndex});
                     player2.setDisable(false);
                     player1.setDisable(true);
                     Player2Light.setVisible(true);
@@ -172,7 +165,7 @@ public class ShipBattleControllerPVP implements Initializable {
         colourP1();
     }
     @FXML
-    public void secondShoot(MouseEvent e) throws IncorrectFileException, FileNotFoundException {
+    public void secondShoot(MouseEvent e) {
         if(e.getButton()== MouseButton.PRIMARY){
             Node target = (Node) e.getTarget();
             // traverse towards root until userSelectionGrid is the parent node
@@ -182,8 +175,8 @@ public class ShipBattleControllerPVP implements Initializable {
                     target = parent;
                 }
             }
-            Integer colIndex = player2.getColumnIndex(target);
-            Integer rowIndex = player2.getRowIndex(target);
+            Integer colIndex = GridPane.getColumnIndex(target);
+            Integer rowIndex = GridPane.getRowIndex(target);
             if (colIndex == null || rowIndex == null) {
                 System.out.println("BOO");
             } else {
@@ -191,7 +184,7 @@ public class ShipBattleControllerPVP implements Initializable {
                     firstPlayerBoard.shotAt(rowIndex, colIndex);
                     if(firstPlayerBoard.isEnded()) secWin();
 
-                    clicked2.add(new int[]{rowIndex.intValue(), colIndex.intValue()});
+                    clicked2.add(new int[]{rowIndex, colIndex});
                     player2.setDisable(true);
                     player1.setDisable(false);
                     Player2Light.setVisible(false);
@@ -206,7 +199,7 @@ public class ShipBattleControllerPVP implements Initializable {
     }
     public boolean checkClicked( ArrayList<int[]> k,Integer r,Integer c){
         for (int[] i:k) {
-            if(i[0]==r.intValue() && i[1]==c.intValue()){
+            if(i[0]== r && i[1]== c){
                 return false;
             }
         }

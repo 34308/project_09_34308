@@ -2,7 +2,7 @@ package com.example.battleshipgui;
 
 import com.example.battleshipgui.exeptions.IncorrectFileException;
 import javafx.event.ActionEvent;
-import javafx.event.Event;
+
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
@@ -11,8 +11,7 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.DialogPane;
 import javafx.scene.control.Label;
-import javafx.scene.input.MouseButton;
-import javafx.scene.input.MouseEvent;
+
 import javafx.scene.layout.GridPane;
 import javafx.scene.shape.Rectangle;
 import javafx.stage.Stage;
@@ -28,7 +27,6 @@ import static javafx.scene.paint.Color.*;
 
 public class AiBattle implements Initializable {
     @FXML
-    public DialogPane startGameWindow;
     public Label endingMessage;
     public DialogPane endingPane;
     public GridPane Ai1;
@@ -40,11 +38,6 @@ public class AiBattle implements Initializable {
     int sqSize=50;
     AiBoard aiboard=new AiBoard();
     AiBoard aiBoard2=new AiBoard();
-    int dir=1;
-    int i=0;
-    boolean o=true;
-
-    ArrayList<int[]> clicked=new ArrayList<int[]>();
 
     public void crateRectangles(){
         for(int i=0;i<100;i++){
@@ -102,7 +95,7 @@ public class AiBattle implements Initializable {
         }
     }
     @FXML
-    public void shoot(ActionEvent event) throws IncorrectFileException, FileNotFoundException {
+    public void shoot(ActionEvent event)  {
         aiboard.shotAt();
        if(aiboard.isEnded())win();
         aiBoard2.shotAt();
@@ -131,9 +124,7 @@ public class AiBattle implements Initializable {
         try {
             aiboard.addAiShips();
             aiBoard2.addAiShips();
-        } catch (FileNotFoundException e) {
-            e.printStackTrace();
-        } catch (IncorrectFileException e) {
+        } catch (FileNotFoundException | IncorrectFileException e) {
             e.printStackTrace();
         }
         crateRectangles();

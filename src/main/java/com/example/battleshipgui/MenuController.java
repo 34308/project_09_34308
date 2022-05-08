@@ -11,7 +11,7 @@ import java.io.IOException;
 
 public class MenuController {
 
-    public void changeStage(ActionEvent event ) throws IOException, InterruptedException {
+    public void changeStage(ActionEvent event ) throws IOException{
         FXMLLoader fxmlLoader = new FXMLLoader(HelloApplication.class.getResource("PlaceShips.fxml"));
         Parent root=fxmlLoader.load();
         Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();

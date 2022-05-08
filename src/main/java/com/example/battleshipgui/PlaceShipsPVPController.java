@@ -40,7 +40,7 @@ public class PlaceShipsPVPController {
         GuiBoard.getScene().getRoot().setCursor(new ImageCursor(image,image.getWidth()/2,image.getHeight()/2));
     }
 
-    public void placeShip(MouseEvent e) throws IOException {
+    public void placeShip(MouseEvent e) {
         crateRectangles();
         if(e.getButton()== MouseButton.SECONDARY){
             dir++;
@@ -60,8 +60,8 @@ public class PlaceShipsPVPController {
                     target = parent;
                 }
             }
-            Integer colIndex = GuiBoard.getColumnIndex(target);
-            Integer rowIndex = GuiBoard.getRowIndex(target);
+            Integer colIndex = GridPane.getColumnIndex(target);
+            Integer rowIndex = GridPane.getRowIndex(target);
             if (colIndex == null || rowIndex == null) {
                 System.out.println("BOO");
             } else {
@@ -70,12 +70,12 @@ public class PlaceShipsPVPController {
                 System.out.println("i=" +i);
                 //wybieranie poszczególnych statków zaczynając od 2-poziomowych po ich ilości 2-4, 3-3 4-2 6-1
                 if (i < 4) {
-                    if(p1==true){
-                        if(board.placeTheShip(i, 2,rowIndex.intValue(),colIndex.intValue(),dir)){
+                    if(p1){
+                        if(board.placeTheShip(i, 2, rowIndex, colIndex,dir)){
                             i++;
                         }
                     }else{
-                        if(board2.placeTheShip(i, 2,rowIndex.intValue(),colIndex.intValue(),dir)){
+                        if(board2.placeTheShip(i, 2, rowIndex, colIndex,dir)){
                             i++;
                         }
                     }
@@ -83,33 +83,33 @@ public class PlaceShipsPVPController {
                 }
                 if (i >= 4 && i < 7) {
                     if(p1){
-                        if(board.placeTheShip(i, 3,rowIndex.intValue(),colIndex.intValue(),dir)){
+                        if(board.placeTheShip(i, 3, rowIndex, colIndex,dir)){
                             i++;
                         }
                     }else{
-                        if(board2.placeTheShip(i, 3,rowIndex.intValue(),colIndex.intValue(),dir)){
+                        if(board2.placeTheShip(i, 3, rowIndex, colIndex,dir)){
                             i++;
                         }
                     }
                 }
                 if (i >= 7 && i < 9) {
-                    if(p1==true){
-                        if(board.placeTheShip(i, 4,rowIndex.intValue(),colIndex.intValue(),dir)){
+                    if(p1){
+                        if(board.placeTheShip(i, 4, rowIndex, colIndex,dir)){
                             i++;
                         }
                     }else{
-                        if(board2.placeTheShip(i, 4,rowIndex.intValue(),colIndex.intValue(),dir)){
+                        if(board2.placeTheShip(i, 4, rowIndex, colIndex,dir)){
                             i++;
                         }
                     }
                 }
                 if (i == 9) {
-                    if(p1==true){
-                        if(board.placeTheShip(i, 6,rowIndex.intValue(),colIndex.intValue(),dir)){
+                    if(p1){
+                        if(board.placeTheShip(i, 6, rowIndex, colIndex,dir)){
                             i++;
                         }
                     }else{
-                        if(board2.placeTheShip(i, 6,rowIndex.intValue(),colIndex.intValue(),dir)){
+                        if(board2.placeTheShip(i, 6, rowIndex, colIndex,dir)){
                             i++;
                         }
                     }

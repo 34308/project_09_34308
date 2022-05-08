@@ -1,6 +1,4 @@
 package com.example.battleshipgui;
-
-import java.util.List;
 import java.util.Random;
 
 public class AiMemory {
@@ -14,8 +12,7 @@ public class AiMemory {
     int current=1;
     int miss=0;
     int boardSize=10;
-    static char[] letters = {'A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J'};
-    public void setCxCy(int c[]) {
+    public void setCxCy(int[] c) {
         this.cx = c[0];
         this.cy = c[1];
     }
@@ -24,8 +21,8 @@ public class AiMemory {
         y=cy;
     }
     public AiMemory(){
-        for(int i=0;i<10;i++){
-            for(int j=0;j<10;j++){
+        for(int i=0;i<boardSize;i++){
+            for(int j=0;j<boardSize;j++){
                 this.board[i][j]=0;
             }
         }
@@ -63,22 +60,20 @@ public class AiMemory {
 
 
     public void copyBoard(int[][] board) {
-        for(int i=0;i<10;i++){
-            for(int j=0;j<10;j++){
-                this.board[i][j]=board[i][j];
-            }
+        for(int i=0;i<boardSize;i++){
+            System.arraycopy(board[i], 0, this.board[i], 0, boardSize);
         }
         addForbiddenRegions();
     }
 
     private void addForbiddenRegions() {
         int [][]checkers ;
-        for(int i=0;i<10;i++){
-            for(int j=0;j<10;j++){
+        for(int i=0;i<boardSize;i++){
+            for(int j=0;j<boardSize;j++){
                if(board[i][j]==9){
                    checkers= new int[][]{{1 + i, j}, {i, j + 1}, {1+i, j + 1}, {i - 1, j}, {i, j - 1}, {i - 1, j - 1}, {i - 1, j + 1}, {1+i , j - 1}};
                     for(int k=0;k<8;k++){
-                        if (checkers[k][0] >= 0 && checkers[k][0] < 10 && checkers[k][1] >= 0 && checkers[k][1] < 10){
+                        if (checkers[k][0] >= 0 && checkers[k][0] < boardSize && checkers[k][1] >= 0 && checkers[k][1] < boardSize){
                             if(board[checkers[k][0]][checkers[k][1]]==0){
                                 board[checkers[k][0]][checkers[k][1]]=8;
                             }
@@ -97,13 +92,8 @@ public class AiMemory {
         this.x = x;
     }
     public boolean check(int[] xy){
-        if(xy[0]>=0&&xy[0]<10&&xy[1]>=0&&xy[1]<10){
-            if(board[xy[0]][xy[1]]==8||board[xy[0]][xy[1]]==9){
-                return false;
-            }
-            else{
-                return true;
-            }
+        if(xy[0]>=0&&xy[0]<10&&xy[1]>=0&&xy[1]<boardSize){
+            return board[xy[0]][xy[1]] != 8 && board[xy[0]][xy[1]] != 9;
         }
         else{
             return false;
@@ -116,8 +106,8 @@ public class AiMemory {
     }
     public void newCoordinates() {
         do {
-            x = generator.nextInt(0, 10);
-            y = generator.nextInt(0, 10);
+            x = generator.nextInt(0, boardSize);
+            y = generator.nextInt(0, boardSize);
         } while (!check(new int[]{x, y}));
     }
     public void nextCurrent() {
@@ -126,20 +116,6 @@ public class AiMemory {
         }
         else{
             current++;
-        }
-    }
-    public void oppositeCurrent() {
-        if(current==1){
-            current=2;
-        }
-        else if(current==2){
-            current=1;
-        }
-        else if(current==3){
-            current=4;
-        }
-        else if(current==4){
-            current=3;
         }
     }
     public void setY(int y) {

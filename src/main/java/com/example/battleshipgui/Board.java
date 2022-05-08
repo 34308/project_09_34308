@@ -1,10 +1,5 @@
 package com.example.battleshipgui;
 
-import javafx.event.ActionEvent;
-
-import java.util.InputMismatchException;
-import java.util.Scanner;
-
 public class Board {
     AiMemory aiMemory =new AiMemory();
     //wielkosc planszy

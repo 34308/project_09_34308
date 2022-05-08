@@ -57,7 +57,7 @@ public class AiBoard extends Board{
         }
         Scanner sc=new Scanner(file);
         String line;
-        ArrayList<Ship> localShips = new ArrayList<Ship>();
+        ArrayList<Ship> localShips = new ArrayList<>();
         while (sc.hasNext()){
             line = sc.nextLine();
             String[] splitedLine = line.split(" ");
@@ -95,13 +95,8 @@ public class AiBoard extends Board{
                 it++;
             }
         }
-        if(it==10){
-           // System.out.println("Gracz wygrał!!");
-            return true;
-
-        }else{
-            return false;
-        }
+        // System.out.println("Gracz wygrał!!");
+        return it == 10;
 
     }
   /**  private int getYCoordinate() {

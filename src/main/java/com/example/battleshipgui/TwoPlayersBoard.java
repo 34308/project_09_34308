@@ -1,7 +1,5 @@
 package com.example.battleshipgui;
 
-import java.util.Scanner;
-
 public class TwoPlayersBoard extends Board {
     public void shotAt(int x,int y){
         if(board[x][y]==1){
@@ -11,11 +9,6 @@ public class TwoPlayersBoard extends Board {
         else if(board[x][y]==0){
             board[x][y]=8;
         }
-    }
-    TwoPlayersBoard(TwoPlayersBoard T){
-        this.board=T.board;
-        this.ships=T.ships;
-
     }
     public TwoPlayersBoard(){
         constructShips();
@@ -51,7 +44,7 @@ public class TwoPlayersBoard extends Board {
                 scanner.nextLine();
             }
         }
-    }*/
+    }
     public void showObstructedPlayerBoard() {
         for (int i = 0; i < boardSize + 1; i++) {
             for (int j = 0; j < boardSize + 1; j++) {
@@ -85,5 +78,5 @@ public class TwoPlayersBoard extends Board {
                 }
             }
         }
-    }
+    }*/
 }

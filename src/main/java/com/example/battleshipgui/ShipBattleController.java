@@ -2,7 +2,6 @@ package com.example.battleshipgui;
 
 import com.example.battleshipgui.exeptions.IncorrectFileException;
 import javafx.event.ActionEvent;
-import javafx.event.Event;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
@@ -24,13 +23,10 @@ import java.net.URL;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.ResourceBundle;
-import java.util.Timer;
 
 import static javafx.scene.paint.Color.*;
 
 public class ShipBattleController implements Initializable {
-    @FXML
-    public DialogPane startGameWindow;
     @FXML
     public Label endingMessage;
     @FXML
@@ -43,14 +39,11 @@ public class ShipBattleController implements Initializable {
     int sqSize=50;
     Board board=new Board();
     AiBoard aiBoard=new AiBoard();
-    int dir=1;
-    int i=0;
-    boolean o=true;
     @FXML
     GridPane PlayerBoard;
     @FXML
     GridPane AIBoard;
-    ArrayList<int[]> clicked=new ArrayList<int[]>();
+    ArrayList<int[]> clicked=new ArrayList<>();
 
 
 
@@ -104,7 +97,7 @@ public class ShipBattleController implements Initializable {
         }
     }
     @FXML
-    public void shoot(MouseEvent e) throws IncorrectFileException, FileNotFoundException {
+    public void shoot(MouseEvent e) {
         if(e.getButton()==MouseButton.PRIMARY){
             Node target = (Node) e.getTarget();
             // traverse towards root until userSelectionGrid is the parent node
@@ -114,8 +107,8 @@ public class ShipBattleController implements Initializable {
                     target = parent;
                 }
             }
-            Integer colIndex = AIBoard.getColumnIndex(target);
-            Integer rowIndex = AIBoard.getRowIndex(target);
+            Integer colIndex = GridPane.getColumnIndex(target);
+            Integer rowIndex = GridPane.getRowIndex(target);
             if (colIndex == null || rowIndex == null) {
                 System.out.println("BOO");
             } else {
@@ -130,7 +123,7 @@ public class ShipBattleController implements Initializable {
                     board.shotAt();
                     if(board.isEnded()) lost();
 
-                    clicked.add(new int[]{rowIndex.intValue(), colIndex.intValue()});
+                    clicked.add(new int[]{rowIndex, colIndex});
                 }
             }
             }
@@ -140,7 +133,7 @@ public class ShipBattleController implements Initializable {
     }
     public boolean checkClicked(Integer r,Integer c){
         for (int[] i:clicked) {
-            if(i[0]==r.intValue() && i[1]==c.intValue()){
+            if(i[0]== r && i[1]== c){
                 return false;
             }
         }
@@ -164,9 +157,7 @@ public class ShipBattleController implements Initializable {
         aiBoard=new AiBoard();
         try {
             aiBoard.addAiShips();
-        } catch (FileNotFoundException e) {
-            e.printStackTrace();
-        } catch (IncorrectFileException e) {
+        } catch (FileNotFoundException | IncorrectFileException e) {
             e.printStackTrace();
         }
         crateRectangles();
