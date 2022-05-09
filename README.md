@@ -18,7 +18,8 @@
  <p>or exit game</p>
 
 ## Player vs Ai
- <p>First player must place his/her ships on the board. It is possible to do using mouse, player can place ships with left click and rotate them using right click</p>
+<p>First player must place his/her ships on the board. It is possible to do using mouse, player can place ships with left click and rotate them using right click</p>
+<p>Below board player can see size of his next ship</p>
 <p align="center">
     <img src="images/plshipsPVA.png" alt="Screenshot">
 </p>
