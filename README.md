@@ -78,12 +78,12 @@
 42 52 62 72<br>
 44 54 64 74 84 94<br>
 <p>every pair of numbers represents coordinates for one part of the ship, depending on how many pairs are in line we know how big the ship is. </p>
-<p>Clss FileValidator checks if those coordinates are right before placing ships on the board</p>
+<p>Class FileValidator checks if those coordinates are right before placing ships on the board</p>
 <h3 align="center">
     How AI Shoot
 </h3>
 <p>this process can be summarised like that </p>
-<p>1.get random position on board(*check if ai can shoot there), and shoot </p>
+<p>1.get random position on board(*check if Ai can shoot there), and shoot </p>
 <p>2.if Ai hitted player ship choose one of four directions and shoot the closest squre in that direction </p>
 <p>3.if shot missed return to 2, but if ship was hitted keep shooting in that direction</p>
 <p>4.if shot missed and enemy ship isn't sunked get back to first hit on this ship and continue step 2(in opposite direction)</p>
@@ -91,8 +91,10 @@
 <p>*Ai checks if place choosen to be shooted hasn't been already picked before</p>
 
 ## Used Software
+<p>IntelliJ IDEA 2021.3.3</p>
 <p>Java: sdk 17</p>
-<p>javafx:17.0.1</p>
+<p>javafx:17.0.2</p>
 
 ## How it was made
-<p>First we wanted to crate this project in console as it was minimum requirement, but after ending it quite early, with a lot of time to spare we have reworked to include GUI</p>
+<p>First we wanted to crate this project in console as it was minimum requirement, but after ending it quite early, with a lot of time to spare we have reworked it to include GUI</p>
+<p>Because of this there still existing part of the codes meant for console functionality, we decided not to delete them but comment them instead. </p>

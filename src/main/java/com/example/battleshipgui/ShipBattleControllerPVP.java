@@ -49,9 +49,6 @@ public class ShipBattleControllerPVP implements Initializable {
         firstPlayerBoard =board;
         secondPlayersBoard = board2;
 
-        firstPlayerBoard.showPlayerBoard();
-        secondPlayersBoard.showPlayerBoard();
-
     }
 
 
@@ -147,7 +144,7 @@ public class ShipBattleControllerPVP implements Initializable {
             Integer colIndex = GridPane.getColumnIndex(target);
             Integer rowIndex = GridPane.getRowIndex(target);
             if (colIndex == null || rowIndex == null) {
-                System.out.println("BOO");
+
             } else {
                 if (checkClicked(clicked,rowIndex, colIndex)) {
                     secondPlayersBoard.shotAt(rowIndex, colIndex);

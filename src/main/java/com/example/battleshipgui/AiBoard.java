@@ -8,7 +8,7 @@ import java.util.Random;
 import java.util.Scanner;
 public class AiBoard extends Board{
     //TAKI SAM JAK SHOW PLAYER BOARD W BOARD ALE NIE WYSWIETLA POZYCJI STATKOW
-    public void showPlayerBoard() {
+    /**public void showPlayerBoard() {
         for (int i = 0; i < boardSize + 1; i++) {
             for (int j = 0; j < boardSize + 1; j++) {
                 if (i == 0) {
@@ -41,7 +41,7 @@ public class AiBoard extends Board{
                 }
             }
         }
-    }
+    }**/
     //ODCZYTYWANIE POZYCJI Z PLIKU I PRZENOSZENIE ICH NA TABLICE
     public void addAiShips() throws FileNotFoundException, IncorrectFileException {
         Random rand = new Random();

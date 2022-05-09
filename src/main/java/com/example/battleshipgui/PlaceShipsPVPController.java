@@ -104,7 +104,7 @@ public class PlaceShipsPVPController {
             } else {
                 player2.getScene().getRoot().setCursor(new ImageCursor(image, image.getWidth() / 2, image.getHeight() / 2));
             }
-            System.out.println(dir);
+
         }
         if (e.getButton() == MouseButton.PRIMARY) {
             Node target = (Node) e.getTarget();
@@ -115,9 +115,9 @@ public class PlaceShipsPVPController {
             if (colIndex == null || rowIndex == null) {
                 System.out.println("BOO");
             } else {
-                System.out.println(rowIndex + " " + colIndex);
+
                 //System.out.printf("Mouse entered cell [%d, %d]%n", colIndex.intValue(), rowIndex.intValue());
-                System.out.println("i=" + i);
+
                 //wybieranie poszczególnych statków zaczynając od 2-poziomowych po ich ilości 2-4, 3-3 4-2 6-1
                 if (i < 4) {
                     if (p1) {
@@ -213,7 +213,7 @@ public class PlaceShipsPVPController {
 
     public void colourTable() {
         clearTable();
-        System.out.println("dział KOLORs " + p1);
+
         for (int i = 0; i < 10; i++) {
             for (int j = 0; j < 10; j++) {
                 if (p1) {
@@ -287,7 +287,7 @@ public class PlaceShipsPVPController {
 
     public void checkBoard2(ActionEvent event) {
         if (checkbox2.isSelected()) {
-            System.out.println("check box test");
+
             if (board2.arePlaced()) {
                 player2.setDisable(true);
             } else {

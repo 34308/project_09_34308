@@ -25,7 +25,8 @@ public class Board {
     //8-pudło
     //9-trafiony
     //1-statek
-    public void showPlayerBoard() {
+
+    /**public void showPlayerBoard() {
         //literowanie po kazdym elemencie tablicy
         for (int i = 0; i < boardSize + 1; i++) {
             for (int j = 0; j < boardSize + 1; j++) {
@@ -60,7 +61,7 @@ public class Board {
                 }
             }
         }
-    }
+    }*/
     //znajduje statek na wkazanej pozycji i odejmuje od niego hp
     public boolean hitShip(int x,int y){
         int[][] position ;
