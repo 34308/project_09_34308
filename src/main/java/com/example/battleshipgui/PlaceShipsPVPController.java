@@ -265,6 +265,7 @@ public class PlaceShipsPVPController {
         if (checkbox1.isSelected()) {
             if (board.arePlaced()) {
                 player1.setDisable(true);
+                player2.setDisable(false);
                 i=0;
                 p1 = false;
             } else {
@@ -272,6 +273,7 @@ public class PlaceShipsPVPController {
             }
             if(checkbox2.isSelected()){
                 startButton.setDisable(false);
+
                 resetSize2();
             }
         } else {

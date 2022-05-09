@@ -9,6 +9,10 @@
 
 <p >
 
+##translation
+- [English](README.md)
+- [Polish](README-pl.md)
+
 ## Menu
 <img src="images/Menu.png" alt="Screenshot">
  <p>In the Menu Player can choose one of the game modes:</p>
