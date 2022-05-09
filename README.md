@@ -36,16 +36,18 @@
 <p>In this game mode recomended is for players to separate view on screen with some type of obstacle</p>
  <p>like before players first will place their ships </p>
 <p align="center">
-    <img src="images/plShipsPVP.png" alt="Screenshot">
+    <img src="images/plShipPVP.png" alt="Screenshot">
 </p>
-<p>if both player placed their ships and checked it using checker on sides of boards the game will start</p>
+<p>if both player placed their ships and checked it using checker above boards the game start button will unlock</p>
+<p>After checking ready? checkbox if player wants to change his/her ships, it is required to reset ships position, then board ships will be erased and board will unlock</p>
 <p align="center">
     <img src="images/battlePVP.png" alt="Screenshot">
 </p>
 <p>Now both players can see their opponent board(big board), and their own board(small board at the bottom) </p>
 <p> the green circle in the corners of window signals current shooter</p>
 <p>players must do move after each other, starting with player 1</p>
-<p>game stops after one of sides doesn't have any unsunken ships</p>
+<p>as in traditional game players are required to inform their opponents if one of their own ships were sunked</p>
+<p>game stops after one of sides sunk all of enemy's ships</p>
 
 ## AI vs AI
 

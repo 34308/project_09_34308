@@ -24,7 +24,7 @@ public class MenuController {
 
     public void PvPStart(ActionEvent event) throws IOException {
         FXMLLoader fxmlLoader = new FXMLLoader(HelloApplication.class.getResource("PlaceShipsPVP.fxml"));
-        Scene scene = new Scene(fxmlLoader.load() ,1000, 1000);
+        Scene scene = new Scene(fxmlLoader.load() ,1240, 1000);
         Stage stage=(Stage) ((Node) event.getSource()).getScene().getWindow();
         stage.setResizable(false);
         stage.setScene(scene);

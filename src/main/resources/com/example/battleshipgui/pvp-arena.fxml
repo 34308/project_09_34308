@@ -559,7 +559,10 @@
         </DialogPane>
         <Circle fx:id="Player1Light" fill="#1fff5c" layoutX="45.0" layoutY="46.0" radius="38.0" stroke="BLACK" strokeType="INSIDE" visible="false" />
         <Circle fx:id="Player2Light" fill="#1fff5c" layoutX="1150.0" layoutY="50.0" radius="38.0" stroke="BLACK" strokeType="INSIDE" visible="false" />
-      <Button layoutX="572.0" layoutY="38.0" mnemonicParsing="false" onAction="#Return" text="Return" />
+      <Button layoutX="468.0" layoutY="38.0" mnemonicParsing="false" onAction="#Return" prefHeight="25.0" prefWidth="274.0" text="Return to menu    |    Return to menu">
+         <font>
+            <Font size="15.0" />
+         </font></Button>
     </children>
 
 </AnchorPane>

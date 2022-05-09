@@ -17,6 +17,8 @@ import java.util.*;
 import static javafx.scene.paint.Color.*;
 
 public class PlaceShip {
+    public GridPane sizeBoard;
+
     Image image = new Image("cursor1.png");
     List <Rectangle> rectangles=new ArrayList<>();
     int it=0;
@@ -31,6 +33,28 @@ public class PlaceShip {
             image = new Image("cursor"+dir+".png");
             GuiBoard.getScene().getRoot().setCursor(new ImageCursor(image,image.getWidth()/2,image.getHeight()/2));
         }
+        sizeBoard.getChildren().get(0).setStyle("-fx-background-color: "+" #C3D120");
+        sizeBoard.getChildren().get(1).setStyle("-fx-background-color: "+" #C3D120");
+    }
+    public void colorSize(){
+        sizeBoard.getChildren().get(0).setStyle("-fx-background-color: "+" #C3D120");
+        sizeBoard.getChildren().get(1).setStyle("-fx-background-color: "+" #C3D120");
+        if(i>=3){
+            sizeBoard.getChildren().get(2).setStyle("-fx-background-color: "+" #C3D120");
+            if(i>=6){
+                sizeBoard.getChildren().get(3).setStyle("-fx-background-color: "+" #C3D120");
+            }
+            if(i>=8){
+                sizeBoard.getChildren().get(4).setStyle("-fx-background-color: "+" #C3D120");
+                sizeBoard.getChildren().get(5).setStyle("-fx-background-color: "+" #C3D120");
+            }
+        }
+    }
+    public void resetSize(){
+        for (Node n : sizeBoard.getChildren()) {
+            n.setStyle("");
+        }
+        colorSize();
     }
     public void placeShip(MouseEvent e){
         crateRectangles();
@@ -61,16 +85,37 @@ public class PlaceShip {
 
                 //wybieranie poszczególnych statków zaczynając od 2-poziomowych po ich ilości 2-4, 3-3 4-2 6-1
                 if (i < 4) {
+                    if(i<3){
+                        colorSize();
+                    }
+                    else{
+                        colorSize();
+
+                    }
                     if(board.placeTheShip(i, 2, rowIndex, colIndex,dir)){
                         i++;
                     }
                 }
                 if (i >= 4 && i < 7) {
+                    if(i<6){
+                        colorSize();
+                    }
+                    else{
+                        colorSize();
+
+                    }
                     if(board.placeTheShip(i, 3, rowIndex, colIndex,dir)){
                         i++;
                     }
                 }
                 if (i >= 7 && i < 9) {
+                    if(i<8){
+                        colorSize();
+                    }
+                    else{
+                        colorSize();
+
+                    }
                     if(board.placeTheShip(i, 4, rowIndex, colIndex,dir)){
                         i++;
                     }
@@ -128,6 +173,7 @@ public class PlaceShip {
         clearTable();
         i=0;
         colourTable();
+        resetSize();
     }
 
 
