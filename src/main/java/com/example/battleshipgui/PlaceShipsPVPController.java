@@ -70,7 +70,6 @@ public class PlaceShipsPVPController {
                 sizeBoard2.getChildren().get(5).setStyle("-fx-background-color: "+sizeColor);
             }
         }
-
     }
     public void setCursor() {
         image = new Image("cursor" + dir + ".png");

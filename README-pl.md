@@ -3,8 +3,7 @@
 <p align="center">
 "BattleShips"
 </p>
-<br>
-<br>
+
 </h1>
 
 <p >

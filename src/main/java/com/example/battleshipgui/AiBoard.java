@@ -3,6 +3,7 @@ import com.example.battleshipgui.exeptions.IncorrectFileException;
 
 import java.io.File;
 import java.io.FileNotFoundException;
+import java.net.URL;
 import java.util.ArrayList;
 import java.util.Random;
 import java.util.Scanner;
@@ -46,10 +47,12 @@ public class AiBoard extends Board{
     public void addAiShips() throws FileNotFoundException, IncorrectFileException {
         Random rand = new Random();
         int fileNumber = rand.nextInt(1,5);
-        File file = new File("scheme"+fileNumber+".txt");
+
+
+        File file = new File("positions/scheme" +fileNumber+".txt");
         FileValidator fileValidator=new FileValidator();
         if(!fileValidator.isValid(file)){
-            throw new IncorrectFileException("File"+"scheme"+fileNumber+".txt"+" is incorrect");
+            throw new IncorrectFileException("/File"+"scheme"+fileNumber+".txt"+" is incorrect");
         }
         Scanner sc=new Scanner(file);
         String line;
