@@ -99,6 +99,11 @@
 <p>Java: sdk 17</p>
 <p>javafx:17.0.2</p>
 
+##How to run
+<p>Main file is 'MainR'(only thing this main do is launch another main HelloAplication, but it is needed to make executable .jar because current version of program converting project to jar have a problem with main's that extend Aplication), program should work as good when runned from HelloAplication</p>
+
+<p>IF this program dont work User should check Javafx libraries if are not added to aplication should add them by module or add Maven dependecys for ver. 17.0.2</p>
+
 ## How it was made
 <p>First we wanted to crate this project in console as it was minimum requirement, but after ending it quite early, with a lot of time to spare we have reworked it to include GUI</p>
 <p>Because of this there still existing part of the codes meant for console functionality, we decided not to delete them but comment them instead. </p>
