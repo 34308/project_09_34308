@@ -99,6 +99,9 @@
 <p>Java: sdk 17</p>
 <p>javafx:17.0.2</p>
 
+## Jak uruchomić
+<p>Aplikacja powinna być uruchomiona z MainR(main ten jedynie uruchamia main HelloAplication, jednak jest on wymagany aby przekonwertować projekt do .jar, obecny program wbudowany w intelij ma problemy podczas przetwarzania aplikacji która rozszerza Aplication(pakiet Javafx)), jednak uruchomienie jej z HelloAplication także powinno działać poprawnie </p>
+
 ## Jak to zrobiliśmy
 <p>Na początku zaplanowaliśmy zrobić ten projekt konsolowo/tekstowo jako że były to minimalne wymagania, ale gdy skończyliśmy znacznie przed końcem terminu, postanowiliśmy przerobić projekt aby używał GUI</p>
 <p>Przez to w kodzie nadal znajdowały się naleciałości z jego konsolowej wersji, postanowiliśmy ich nie usuwać, a jedynie zakomentować</p>
